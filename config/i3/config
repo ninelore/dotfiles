@@ -15,7 +15,8 @@ exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id xss-lock -l blurlock  #Lock after suspend
 exec --no-startup-id exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xautolock -time 5 -locker blurlock -corners 000-
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id ~/.config/compton.sh
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id pulseaudio -k && pulseaudio -D
@@ -26,9 +27,9 @@ exec --no-startup-id blueman-applet
 
 # application binds
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec ranger
+bindsym $mod+F3 exec urxvt -e 'ranger'
 bindsym $mod+Shift+F3 exec pcmanfm
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id ~/.config/compton.sh
