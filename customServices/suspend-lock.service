@@ -1,0 +1,10 @@
+[Unit]
+Description=Lock the screen before suspending
+Before=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=blurlock
+
+[Install]
+WantedBy=suspend.target
