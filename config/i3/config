@@ -23,7 +23,7 @@ exec --no-startup-id pulseaudio -k && pulseaudio -D
 exec --no-startup-id pasystray
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id sleep 2 && blurlock
+exec --no-startup-id sleep 1 && blurlock
 #exec --no-startup-id clipit
 
 # application binds
