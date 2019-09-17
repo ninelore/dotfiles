@@ -12,9 +12,9 @@ font pango:Oswald 10
 ###  Apps  ###
 # autostart
 exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec --no-startup-id xss-lock -l blurlock  #Lock after suspend
+exec --no-startup-id xss-lock -l 'blurlock --nofork'  #Lock after suspend
 exec --no-startup-id exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id xautolock -time 5 -locker blurlock -corners 000-
+exec --no-startup-id xautolock -time 5 -locker blurlock -corners ----
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id ~/.config/compton.sh
@@ -38,7 +38,6 @@ bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+Ctrl+m exec pavucontrol
 bindsym $mod+d exec dmenu_run -q -b -h 24 -i -o 0.70 -fn "SourceCodePro 12" -w 1336 -x 15 -y 8
-bindsym $mod+z exec rofi -show run 
 # Lockscreen
 #bindsym $mod+0 exec --no-startup-id blurlock
 
@@ -121,9 +120,20 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move current workspace between monitors
+bindsym $mod+Control+Left move workspace to output left
+bindsym $mod+Control+Down move workspace to output down
+bindsym $mod+Control+Up move workspace to output up
+bindsym $mod+Control+Right move workspace to output right
+
+# toggle road and multi-monitor mode via xrandr
+#bindsym $mod+m         exec xrandr --output HDMI1 --off
+#bindsym $mod+shift+m   exec xrandr --output HDMI1 --auto --right-of LVDS1
+
+# rename current workspace
+bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New number(name): '
+
 # split orientation
-bindsym $mod+h split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
 bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
@@ -146,7 +156,7 @@ bindsym $mod+Shift+s sticky toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
+# focus the child container (WARNING CONFLICT KEYBIND (dmenu; line 40))
 #bindsym $mod+d focus child
 
 # move the currently focused window to the scratchpad
@@ -225,6 +235,8 @@ for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable
 for_window [class="feh"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
+for_window [class="nitrogen"] floating enable
+#for_window [class=""] floating enable
 floating_maximum_size 1280 x 720
 # pop-ups and dialogs
 for_window [window_role="pop-up"] floating enable
