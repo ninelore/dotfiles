@@ -12,7 +12,7 @@ font pango:Oswald 10
 ###  Apps  ###
 # autostart
 exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec --no-startup-id xss-lock -l blurlock   #Lock after suspend
+exec --no-startup-id xss-lock -l blurlock --nofork  #Lock after suspend
 exec --no-startup-id exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xautolock -time 5 -locker blurlock --nofork -corners ----
 exec --no-startup-id nitrogen --restore
