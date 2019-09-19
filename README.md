@@ -5,7 +5,7 @@ The Root of this repo resembles the Home Folder.
 But be aware: This isnt complete as of now, be prepared to tinker around!
 
 # Installation
-**I recommend using the yay pacman / AUR wrapper. It is required to use the package list txt coming sonn to automaticly install all requirements**
+**I recommend using the yay pacman/AUR wrapper. It's also required to use the package list txt coming soon to automaticly install all requirements**
 
 required package list is coming soon/tba. Until then, read the config files for requirements
 
