@@ -1,5 +1,5 @@
 # ninelore's dotfiles
-My Arch i3 dotfiles (WIP)
+My Arch/Manjaro i3 dotfiles (WIP)
 
 The Root of this repo resembles the Home Folder.
 But be aware: This isnt complete as of now, be prepared to tinker around!
