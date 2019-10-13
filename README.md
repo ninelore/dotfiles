@@ -14,5 +14,8 @@ just put the files where they belong and adjust where needed
 # FAQ
 **Q:** What DM are u using?        **A:** none, I use xinitrc and I set tty1 to autologin and added a startx script to my .zprofile
 
+# Credits
+https://github.com/petvas/i3lock-blur
+
 # Picture
 ![Picture](preview.png)
