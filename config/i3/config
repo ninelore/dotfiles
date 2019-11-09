@@ -36,7 +36,7 @@ bindsym $mod+Ctrl+t exec --no-startup-id ~/.config/compton.sh
 bindsym Print exec --no-startup-id gnome-screenshot -i
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+Ctrl+m exec pavucontrol
-bindsym $mod+d exec dmenu_run -s 0 -q -b -h 24 -i -o 0.70 -fn "SourceCodePro 12" -y 8
+bindsym $mod+d exec ~/dmenu-aliases-zsh.sh
 # Lockscreen
 #bindsym $mod+0 exec --no-startup-id blurlock
 
