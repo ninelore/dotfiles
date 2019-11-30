@@ -50,3 +50,4 @@ fi
 
 numlockx on
 exec i3
+#exec awesome
