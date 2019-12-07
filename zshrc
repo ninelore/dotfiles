@@ -112,3 +112,17 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias bnet='lutris lutris:rungame/battlenet'
+bindkey -v
+
+alias v='vim'
+alias zat='zathura'
+alias untar='tar -zxvf'
+alias ls='ls --color=auto'
+alias l.='ls -d .* --color=auto'
+alias sv='sudo v'
+alias edit='vim'
+alias root='sudo -i'
+alias su='sudo -i'
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+alias upall="yay -Syu --noconfirm"
+

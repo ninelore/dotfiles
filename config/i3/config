@@ -12,36 +12,33 @@ font pango:Oswald 10
 ###  Apps  ###
 # autostart
 exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec --no-startup-id xss-lock -l '~/.config/blurlocksh/lock.sh' --nofork  #Lock after suspend
 exec --no-startup-id exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id xautolock -time 5 -corners 0--0 -locker '~/.config/blurlocksh/lock.sh' --nofork
+exec --no-startup-id xautolock -time 5 -corners 0--0 -locker '~/.config/blurlocksh/lock.sh'
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id ~/.config/compton.sh
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+#exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id pulseaudio -k && pulseaudio -D
-exec --no-startup-id volumeicon
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
+#exec --no-startup-id volumeicon
+#exec --no-startup-id nm-applet
+#exec --no-startup-id blueman-applet
 exec --no-startup-id sleep 1 && ~/.config/blurlocksh/lock.sh
 
 # application binds
 # start a terminal
 bindsym $mod+Return exec urxvt
-bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec urxvt -e 'ranger'
-bindsym $mod+Shift+F3 exec pcmanfm
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id ~/.config/compton.sh
+bindsym $mod+o exec --no-startup-id ~/.config/compton.sh
 bindsym Print exec --no-startup-id gnome-screenshot -i
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-bindsym $mod+Ctrl+m exec pavucontrol
-bindsym $mod+d exec ~/dmenu-aliases-zsh.sh
-# Lockscreen
-#bindsym $mod+0 exec --no-startup-id blurlock
+bindsym $mod+Shift+x --release exec --no-startup-id xkill
+bindsym $mod+m exec pavucontrol
+bindsym $mod+n exec networkmanager_dmenu -sb '#c5c8c6' -sf '#000000' -s 0 -h 20 -i -o 0.80 -fn 'SourceCodePro 12'
+bindsym $mod+d exec "~/.config/i3/scripts/dmenubar.sh"
+bindsym $mod+b exec "~/.config/i3/scripts/btmenu.sh"
+bindsym $mod+t exec "~/.config/i3/scripts/todo.sh"
+
 
 # Exit menu
-bindsym $mod+0 mode "$mode_system"
+bindsym $mod+x mode "$mode_system" && notify-send "System mode active" "(l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown"
 set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id ~/.config/blurlocksh/lock.sh, mode "default"
@@ -52,12 +49,14 @@ mode "$mode_system" {
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym Return mode "default" && notify-send "Normal mode"
+    bindsym Escape mode "default" && notify-send "Normal mode"
 }
 
+# Bars And Satus Lines
 
-###  Ricing  ###
+
+# Focus follows mouse
 #focus_follows_mouse no
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
@@ -66,9 +65,9 @@ default_floating_border 1pixel
 # Hide borders
 hide_edge_borders none
 # change borders
-bindsym $mod+u border none
-bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
+#bindsym $mod+u border none
+#bindsym $mod+y border pixel 1
+#bindsym $mod+n border normal
 
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use
@@ -90,15 +89,10 @@ client.background       $bg
 
 ###  CONTROLS  ###
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -106,30 +100,39 @@ floating_modifier $mod
 # kill focus
 bindsym $mod+Shift+q kill
 
-# focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# change focus
+bindcode $mod+44 focus left
+bindcode $mod+45 focus down
+bindcode $mod+46 focus up
+bindcode $mod+47 focus right
+# alternatively, you can use the cursor keys:
+bindcode $mod+113 focus left
+bindcode $mod+116 focus down
+bindcode $mod+111 focus up
+bindcode $mod+114 focus right
 
-# move focused
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# move focused window
+bindcode $mod+Shift+44 move left
+bindcode $mod+Shift+45 move down
+bindcode $mod+Shift+46 move up
+bindcode $mod+Shift+47 move right
+# alternatively, you can use the cursor keys:
+bindcode $mod+Shift+113 move left
+bindcode $mod+Shift+116 move down
+bindcode $mod+Shift+111 move up
+bindcode $mod+Shift+114 move right
 
 # move current workspace between monitors
-bindsym $mod+Control+Left move workspace to output left
-bindsym $mod+Control+Down move workspace to output down
-bindsym $mod+Control+Up move workspace to output up
-bindsym $mod+Control+Right move workspace to output right
+bindcode $mod+Control+44 move workspace to output left
+bindcode $mod+Control+45 move workspace to output down
+bindcode $mod+Control+46 move workspace to output up
+bindcode $mod+Control+47 move workspace to output right
+# alternatively, you can use the cursor keys:
+bindcode $mod+Control+113 move workspace to output left
+bindcode $mod+Control+116 move workspace to output down
+bindcode $mod+Control+111 move workspace to output up
+bindcode $mod+Control+114 move workspace to output right
 
-# toggle road and multi-monitor mode via xrandr
-#bindsym $mod+m         exec xrandr --output HDMI1 --off
-#bindsym $mod+shift+m   exec xrandr --output HDMI1 --auto --right-of LVDS1
-
-# rename current workspace
-bindsym $mod+Control+r exec i3-input -F 'rename workspace to "%s"' -P 'New number(name): '
 
 # split orientation
 bindsym $mod+q split toggle
@@ -138,7 +141,6 @@ bindsym $mod+q split toggle
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -154,8 +156,8 @@ bindsym $mod+Shift+s sticky toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container (WARNING CONFLICT KEYBIND (dmenu; line 40))
-#bindsym $mod+d focus child
+# focus the child container
+bindsym $mod+s focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -174,9 +176,9 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+0 workspace 10
 
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -188,9 +190,10 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
@@ -203,43 +206,29 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 4 px or 4 ppt
+        bindsym Down resize grow height 4 px or 4 ppt
+        bindsym Up resize shrink height 4 px or 4 ppt
+        bindsym Right resize grow width 4 px or 4 ppt
 
         # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym Return mode "default" && notify-send "Normal mode"
+        bindsym Escape mode "default" && notify-send "Normal mode"
+        bindsym $mod+r mode "default" && notify-send "Normal mode"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize" && notify-send "Resizing..."
 
 
 ## floating
-# Open specific applications in floating mode (merged from manjaro default i3 config)
-for_window [title="alsamixer"] floating enable
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable
-for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable
-for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable
-for_window [class="feh"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
-for_window [class="nitrogen"] floating enable
-#for_window [class=""] floating enable
-floating_maximum_size 1280 x 720
-# pop-ups and dialogs
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 
 ### settings for i3-gaps: ###
 
-gaps inner 15
-gaps outer 2
+gaps inner 10
+#gaps outer 2
 smart_borders no_gaps
 #smart_gaps on
