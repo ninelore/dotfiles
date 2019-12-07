@@ -32,13 +32,13 @@ bindsym Print exec --no-startup-id gnome-screenshot -i
 bindsym $mod+Shift+x --release exec --no-startup-id xkill
 bindsym $mod+m exec pavucontrol
 bindsym $mod+n exec networkmanager_dmenu -sb '#c5c8c6' -sf '#000000' -s 0 -h 20 -i -o 0.80 -fn 'SourceCodePro 12'
-bindsym $mod+d exec "~/.config/i3/scripts/dmenubar.sh"
-bindsym $mod+b exec "~/.config/i3/scripts/btmenu.sh"
-bindsym $mod+t exec "~/.config/i3/scripts/todo.sh"
+bindsym $mod+d exec sh ~/.config/i3/scripts/dmenubar.sh
+bindsym $mod+b exec sh ~/.config/i3/scripts/btmenu.sh
+bindsym $mod+t exec sh ~/.config/i3/scripts/todo.sh
 
 
 # Exit menu
-bindsym $mod+x mode "$mode_system" && notify-send "System mode active" "(l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown"
+bindsym $mod+x mode "$mode_system"
 set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id ~/.config/blurlocksh/lock.sh, mode "default"
@@ -89,10 +89,9 @@ client.background       $bg
 
 ###  CONTROLS  ###
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
