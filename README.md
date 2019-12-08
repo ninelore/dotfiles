@@ -16,7 +16,6 @@ just put the files where they belong, add a dot to the files that belong directl
 
 # Credits
 https://github.com/petvas/i3lock-blur
-https://github.com/sealj553/dmenu-aliases-zsh
 
-# Picture
+# Picture (outdated)
 ![Picture](preview.png)
