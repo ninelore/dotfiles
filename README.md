@@ -12,10 +12,12 @@ The installation script is WIP!!!!. As of now it only installs dependencys over 
 just put the files where they belong, add a dot to the files that belong directly to your home folder and adjust configs where needed
 
 # FAQ
-**Q:** What DM are u using?        **A:** none, I use xinitrc and I set tty1 to autologin and added a startx script to my .zprofile
+tbd
 
 # Credits
 https://github.com/petvas/i3lock-blur
 
 # Picture (outdated)
-![Picture](preview.png)
+![Picture1](previewPics/Preview1.png)
+![Picture2](previewPics/PreviewDmenubar.png)
+![Picture3](previewPics/PreviewDmenuTasks.png)
