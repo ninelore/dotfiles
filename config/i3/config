@@ -35,6 +35,7 @@ bindsym $mod+n exec networkmanager_dmenu -sb '#c5c8c6' -sf '#000000' -s 0 -h 20 
 bindsym $mod+d exec sh ~/.config/i3/scripts/dmenubar.sh
 bindsym $mod+b exec sh ~/.config/i3/scripts/btmenu.sh
 bindsym $mod+t exec sh ~/.config/i3/scripts/todo.sh
+bindsym $mod+F1 exec firefox
 
 
 # Exit menu
@@ -220,6 +221,8 @@ bindsym $mod+r mode "resize" && notify-send "Resizing..."
 
 
 ## floating
+for_window [class="feh"] floating enable
+for_window [class="nitrogen"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
