@@ -17,7 +17,7 @@ tbd
 # Credits
 https://github.com/petvas/i3lock-blur
 
-# Picture (outdated)
+# Pictures
 ![Picture1](previewPics/Preview1.png)
 ![Picture2](previewPics/PreviewDmenubar.png)
 ![Picture3](previewPics/PreviewDmenuTasks.png)
