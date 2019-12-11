@@ -217,7 +217,7 @@ mode "resize" {
         bindsym $mod+r mode "default" && notify-send "Normal mode"
 }
 
-bindsym $mod+r mode "resize" && notify-send "Resizing..."
+bindsym $mod+r mode "resize"
 
 
 ## floating
