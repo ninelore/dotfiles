@@ -4,6 +4,11 @@ My Arch/Manjaro i3 dotfiles (WIP)
 The Root of this repo resembles the Home Folder.
 But be aware: This isnt complete as of now, be prepared to tinker around!
 
+# To-Do
+* dmenubar.sh: List all existing Workspaces and highlight the focused
+* dmenubar.sh: get colors from Xrdb
+* Xrdb: generate colorsheme from wallpaper
+
 # Installation
 **I recommend using the yay pacman/AUR wrapper. It's also required to use the package list txt coming soon to automaticly install all requirements**
 
