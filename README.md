@@ -1,8 +1,6 @@
 # ninelore's dotfiles
-My Arch/Manjaro i3 dotfiles (WIP)
+My Arch/Manjaro i3 and qtile dotfiles (qtile dots WIP)
 
-The Root of this repo resembles the Home Folder.
-But be aware: This isnt complete as of now, be prepared to tinker around!
 
 # To-Do
 * dmenubar.sh: List all existing Workspaces and highlight the focused
