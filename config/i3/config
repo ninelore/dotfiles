@@ -212,9 +212,9 @@ mode "resize" {
         bindsym Right resize grow width 4 px or 4 ppt
 
         # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default" && notify-send "Normal mode"
-        bindsym Escape mode "default" && notify-send "Normal mode"
-        bindsym $mod+r mode "default" && notify-send "Normal mode"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
