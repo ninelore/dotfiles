@@ -17,10 +17,7 @@ exec --no-startup-id xautolock -time 5 -corners 0--0 -locker '~/.config/blurlock
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id ~/.config/compton.sh
-#exec_always --no-startup-id ~/.config/polybar/launch.sh
-#exec --no-startup-id volumeicon
-#exec --no-startup-id nm-applet
-#exec --no-startup-id blueman-applet
+exec_always --no-startup-id pulseaudio -k && pulseaudio -D 
 exec --no-startup-id sleep 1 && ~/.config/blurlocksh/lock.sh
 
 # application binds
@@ -36,25 +33,9 @@ bindsym $mod+d exec sh ~/.config/i3/scripts/dmenubar.sh
 bindsym $mod+b exec sh ~/.config/i3/scripts/btmenu.sh
 bindsym $mod+t exec sh ~/.config/i3/scripts/todo.sh
 bindsym $mod+F1 exec firefox
-
-
-# Exit menu
-bindsym $mod+x mode "$mode_system"
-set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.config/blurlocksh/lock.sh, mode "default"
-    bindsym s exec --no-startup-id ~/.config/blurlocksh/lock.sh && systemctl suspend, mode "default"
-    bindsym e exec --no-startup-id ~/.config/blurlocksh/lock.sh && i3-msg exit, mode "default"
-    bindsym h exec --no-startup-id ~/.config/blurlocksh/lock.sh && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-# Bars And Satus Lines
+# manual Lock
+bindsym $mod+x exec --no-startup-id ~/.config/blurlocksh/lock.sh
+bindsym $mod+Control+x exec --no-startup-id ~/.config/blurlocksh/lock.sh && systemctl suspend
 
 
 # Focus follows mouse
