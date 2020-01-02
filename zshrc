@@ -125,4 +125,4 @@ alias root='sudo -i'
 alias su='sudo -i'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 alias upall="yay -Syu --noconfirm"
-
+alias poff="systemctl poweroff -i"
