@@ -119,10 +119,11 @@ alias zat='zathura'
 alias untar='tar -zxvf'
 alias ls='ls --color=auto'
 alias l.='ls -d .* --color=auto'
-alias sv='sudo v'
+alias sv='sudo vim'
 alias edit='vim'
 alias root='sudo -i'
 alias su='sudo -i'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 alias upall="yay -Syu --noconfirm"
 alias poff="systemctl poweroff -i"
+alias reboot="systemctl reboot"
