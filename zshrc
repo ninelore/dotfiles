@@ -127,3 +127,4 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 alias upall="yay -Syu --noconfirm"
 alias poff="systemctl poweroff -i"
 alias reboot="systemctl reboot"
+alias winboot="sudo extlinux -o windows /boot/syslinux"
