@@ -17,7 +17,7 @@ exec --no-startup-id xautolock -time 5 -corners 0--0 -locker '~/.config/blurlock
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id ~/.config/compton.sh
-exec_always --no-startup-id pulseaudio -k && pulseaudio -D 
+#exec_always --no-startup-id pulseaudio -k && pulseaudio -D 
 exec --no-startup-id sleep 1 && ~/.config/blurlocksh/lock.sh
 
 # application binds
