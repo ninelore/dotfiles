@@ -39,7 +39,7 @@ bindsym $mod+Control+x exec --no-startup-id ~/.config/blurlocksh/lock.sh && syst
 
 
 # Focus follows mouse
-#focus_follows_mouse no
+focus_follows_mouse no
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
