@@ -16,14 +16,14 @@ exec --no-startup-id exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-aut
 exec --no-startup-id xautolock -time 5 -corners 0--0 -locker '~/.config/blurlocksh/lock.sh'
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
-exec_always --no-startup-id ~/.config/compton.sh
-exec_always --no-startup-id pulseaudio -k && pulseaudio --start
+exec_always --no-startup-id ~/.config/picom.sh
+#exec_always --no-startup-id pulseaudio -k && pulseaudio --start
 exec --no-startup-id sleep 1 && ~/.config/blurlocksh/lock.sh
 
 # application binds
 # start a terminal
 bindsym $mod+Return exec urxvt
-bindsym $mod+o exec --no-startup-id ~/.config/compton.sh
+bindsym $mod+o exec --no-startup-id ~/.config/picom.sh
 bindsym Print exec --no-startup-id gnome-screenshot -i
 bindsym $mod+Shift+x --release exec --no-startup-id xkill
 bindsym $mod+m exec pavucontrol
@@ -39,7 +39,7 @@ bindsym $mod+Control+x exec --no-startup-id ~/.config/blurlocksh/lock.sh && syst
 
 
 # Focus follows mouse
-focus_follows_mouse no
+#focus_follows_mouse no
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
