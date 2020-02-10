@@ -111,7 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias bnet='lutris lutris:rungame/battlenet'
+alias bnet='nohup lutris lutris:rungame/battlenet'
 bindkey -v
 
 alias v='vim'
@@ -127,4 +127,5 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 alias upall="yay -Syu --noconfirm"
 alias poff="systemctl poweroff -i"
 alias reboot="systemctl reboot"
-alias winboot="sudo extlinux -o windows /boot/syslinux"
+alias winboot="sudo extlinux -o windows /boot/syslinux && systemctl reboot"
+alias r='ranger'
