@@ -209,6 +209,9 @@ for_window [class="qjackctl"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
+# i3lock border none
+for_window [class="i3lock"] border none
+
 
 ### settings for i3-gaps: ###
 
