@@ -14,8 +14,8 @@ Volume(){
 }
 
 Workspace(){
-	WS=$(python3 -c "import json; print(next(filter(lambda w: w['focused'], json.loads('$(i3-msg -t get_workspaces)')))['num'])")
-	echo "Workspace: $WS"
+	WS=$(python3 -c "import json; print(' '.join('>{}<'.format(_['name']) if _['focused'] else _['name'] for _ in json.loads('''$(i3-msg -t get_workspaces)''')))")	
+	echo "Workspaces: $WS"
 }
 
 dmenu_run -p "$(Clock) | $(Date) | $(Volume) | $(Workspace)" -sb '#c5c8c6' -sf '#000000' -q -s 0 -h 20 -i -o 0.80 -fn 'SourceCodePro 12'
