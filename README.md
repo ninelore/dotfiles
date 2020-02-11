@@ -4,8 +4,7 @@ My Arch/Manjaro i3 and qtile dotfiles (qtile dots WIP)
 
 # To-Do
 * dmenubar.sh: List all existing Workspaces and highlight the focused
-* dmenubar.sh: get colors from Xrdb
-* Xrdb: generate colorsheme from wallpaper (nitrogen)
+* dmenu scripts: get colors from Xrdb
 
 # Installation
 **I recommend using the yay pacman/AUR wrapper. It's also required to use the package list txt coming soon to automaticly install all requirements**
