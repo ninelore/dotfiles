@@ -3,7 +3,6 @@ My Arch/Manjaro i3 and qtile dotfiles (qtile dots WIP)
 
 
 # To-Do
-* dmenubar.sh: List all existing Workspaces and highlight the focused
 * dmenu scripts: get colors from Xrdb
 
 # Installation
