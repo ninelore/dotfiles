@@ -14,7 +14,7 @@ Volume(){
 }
 
 Workspace(){
-	WS=$(python3 -c "import json; print(' '.join('>{}<'.format(_['name']) if _['focused'] else _['name'] for _ in json.loads('''$(i3-msg -t get_workspaces)''')))")	
+	WS=$(python3 -c "import json; print(' '.join('>{}<'.format(_['name']) if _['focused'] else _['name'] for _ in sorted(json.loads('''$(i3-msg -t get_workspaces)'''), key=lambda x: x['num'])))")
 	echo "Workspaces: $WS"
 }
 
