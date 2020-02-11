@@ -213,6 +213,6 @@ for_window [window_role="task_dialog"] floating enable
 ### settings for i3-gaps: ###
 
 gaps inner 10
-#gaps outer 2
+gaps outer 0
 smart_borders no_gaps
 #smart_gaps on

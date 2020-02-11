@@ -17,7 +17,7 @@ URxvt*loginShell: true
 URxvt.borderless: true
 URxvt*dynamicColors: on
 !URxvt.geometry: 90x20
-URxvt.internalBorder: 20
+URxvt.internalBorder: 8
 URxvt.lineSpace: 1
 URxvt.saveLines: 0
 URxvt*termName: rxvt-unicode-256color
