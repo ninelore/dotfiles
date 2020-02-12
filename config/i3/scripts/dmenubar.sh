@@ -18,10 +18,10 @@ Workspace(){
 	echo "Workspaces: $WS"
 }
 
-Spotify(){
-	SpNP=$(spotifycli --statusshort)
-	echo "Playing: $SpNP"
-}
+#Spotify(){
+#	SpNP=$(spotifycli --statusshort)
+#	echo "Playing: $SpNP"
+#}
 
-dmenu_run -p "$(Clock) | $(Date) | $(Volume) | $(Spotify) | $(Workspace)" -sb '#c5c8c6' -sf '#000000' -q -s 0 -h 20 -i -o 0.80 -fn 'SourceCodePro 12'
+dmenu_run -p "$(Clock) | $(Date) | $(Volume) | $(Workspace)" -sb '#c5c8c6' -sf '#000000' -q -s 0 -h 20 -i -o 0.80 -fn 'SourceCodePro 12'
 
