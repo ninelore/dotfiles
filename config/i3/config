@@ -33,6 +33,7 @@ bindsym $mod+d exec sh ~/.config/i3/scripts/dmenubar.sh
 bindsym $mod+b exec sh ~/.config/i3/scripts/btmenu.sh
 bindsym $mod+t exec sh ~/.config/i3/scripts/todo.sh
 bindsym $mod+F1 exec firefox
+bindsym $mod+F2 exec gnome-calculator
 # manual Lock
 bindsym $mod+x exec --no-startup-id ~/.config/blurlocksh/lock.sh
 bindsym $mod+Control+x exec --no-startup-id ~/.config/blurlocksh/sleep.sh
@@ -203,6 +204,7 @@ bindsym $mod+r mode "resize"
 
 ## floating
 for_window [class="feh"] floating enable
+for_window [class="gnome-calculator"] floating enable
 for_window [class="nitrogen"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="qjackctl"] floating enable
