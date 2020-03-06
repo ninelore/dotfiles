@@ -16,8 +16,7 @@ exec --no-startup-id exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-aut
 exec --no-startup-id xautolock -time 5 -corners 0--0 -locker '~/.config/blurlocksh/lock.sh'
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
-exec_always --no-startup-id ~/.config/picom.sh
-#exec_always --no-startup-id pulseaudio -k && pulseaudio --start
+exec --no-startup-id ~/.config/picom.sh
 exec --no-startup-id sleep 1 && ~/.config/blurlocksh/lock.sh
 
 # application binds
