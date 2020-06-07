@@ -8,7 +8,6 @@ set $mod Mod4
 # Font for window titles.
 font pango:Oswald 10
 
-
 ###  Apps  ###
 # autostart
 exec_always --no-startup-id xrdb -merge ~/.Xresources
@@ -36,7 +35,6 @@ bindsym $mod+F2 exec gnome-calculator
 # manual Lock
 bindsym $mod+x exec --no-startup-id ~/.config/blurlocksh/lock.sh
 bindsym $mod+Control+x exec --no-startup-id ~/.config/blurlocksh/sleep.sh
-
 
 # Focus follows mouse
 #focus_follows_mouse no
@@ -67,7 +65,6 @@ client.urgent           $fg     $bg     $fg  $bg       $fg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 client.background       $bg
-
 
 ###  CONTROLS  ###
 # Use pactl to adjust volume in PulseAudio.
@@ -113,7 +110,6 @@ bindcode $mod+Control+113 move workspace to output left
 bindcode $mod+Control+116 move workspace to output down
 bindcode $mod+Control+111 move workspace to output up
 bindcode $mod+Control+114 move workspace to output right
-
 
 # split orientation
 bindsym $mod+q split toggle
@@ -178,7 +174,6 @@ bindsym $mod+Shift+0 move container to workspace 10
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -187,23 +182,27 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 4 px or 4 ppt
-        bindsym Down resize grow height 4 px or 4 ppt
-        bindsym Up resize shrink height 4 px or 4 ppt
-        bindsym Right resize grow width 4 px or 4 ppt
+        bindcode 44 resize shrink width 10 px or 10 ppt
+        bindcode 45 resize grow height 10 px or 10 ppt
+        bindcode 46 resize shrink height 10 px or 10 ppt
+        bindcode 47 resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindcode 113 resize shrink width 10 px or 10 ppt
+        bindcode 116 resize grow height 10 px or 10 ppt
+        bindcode 111 resize shrink height 10 px or 10 ppt
+        bindcode 114 resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindcode 36 mode "default"
+        bindcode 9 mode "default"
+        bindcode $mod+27 mode "default"
 }
-
-bindsym $mod+r mode "resize"
-
+bindcode $mod+27 mode "resize"
 
 ## floating
 for_window [class="feh"] floating enable
-for_window [class="gnome-calculator"] floating enable
+for_window [class="Gnome-calculator"] floating enable
 for_window [class="nitrogen"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="qjackctl"] floating enable
@@ -215,6 +214,10 @@ for_window [class="i3lock"] border none
 
 
 ### settings for i3-gaps: ###
+
+bindsym $mod+Control+plus gaps inner all plus 5
+bindsym $mod+Control+minus gaps inner all minus 5
+bindsym $mod+Control+0 gaps inner all set 0
 
 gaps inner 10
 gaps outer 0
