@@ -230,7 +230,7 @@ bindsym $mod+Control+w gaps inner all plus 5
 bindsym $mod+Control+s gaps inner all minus 5
 bindsym $mod+Control+d gaps inner all set 0
 
-gaps inner 5
+gaps inner 0
 gaps outer 0
 smart_borders no_gaps
 #smart_gaps on
