@@ -28,7 +28,6 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id ~/.config/picom.sh
 exec --no-startup-id sleep 1 && ~/.config/blurlocksh/lock.sh
 exec --no-startup-id nm-applet
-exec --no-startup-id pulseaudio --start
 
 # application binds
 # start a terminal
