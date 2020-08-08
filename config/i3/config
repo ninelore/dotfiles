@@ -36,7 +36,7 @@ bindsym $mod+o exec --no-startup-id ~/.config/picom.sh
 bindsym Print exec --no-startup-id gnome-screenshot -i
 bindsym $mod+Shift+x --release exec --no-startup-id xkill
 bindsym $mod+m exec pavucontrol
-bindsym $mod+Control+m exec pulseaudio -k && pulseaudio --start
+bindsym $mod+Control+m exec pulseaudio -k && sleep 1 && pulseaudio --start
 bindsym $mod+Shift+Control+m exec pulseaudio --start
 bindsym $mod+v exec qjackctl
 bindsym $mod+n exec networkmanager_dmenu -sb '#c5c8c6' -sf '#000000' -s 0 -h 20 -i -o 0.80 -fn 'SourceCodePro 12'
