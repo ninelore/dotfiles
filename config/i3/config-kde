@@ -8,47 +8,19 @@ set $mod Mod4
 # Font for window titles.
 font pango:Oswald 10
 
-# Bar as System tray only
-bar {
-	mode invisible
-	output primary
-	tray_output primary
-	position top
-}
-bindsym $mod+u bar mode hide
-bindsym $mod+Shift+u bar mode invisible
-
 ###  Apps  ###
 # autostart
-exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id pulseaudio --start
-exec --no-startup-id exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id xautolock -time 5 -corners 0--0 -locker '~/.config/blurlocksh/lock.sh'
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id ~/.config/picom.sh
-exec --no-startup-id sleep 1 && ~/.config/blurlocksh/lock.sh
-exec --no-startup-id nm-applet
+exec --no-startup-id nitrogen --restore
 
 # application binds
 # start a terminal
-bindsym $mod+Return exec urxvt
 bindsym $mod+o exec --no-startup-id ~/.config/picom.sh
-bindsym Print exec --no-startup-id gnome-screenshot -i
-bindsym $mod+Shift+x --release exec --no-startup-id xkill
-bindsym $mod+m exec pavucontrol
-bindsym $mod+Control+m exec pulseaudio -k && sleep 1 && pulseaudio --start
-bindsym $mod+Shift+Control+m exec pulseaudio --start
-bindsym $mod+v exec qjackctl
-bindsym $mod+n exec networkmanager_dmenu -sb '#c5c8c6' -sf '#000000' -s 0 -h 20 -i -o 0.80 -fn 'SourceCodePro 12'
-bindsym $mod+d exec sh ~/.config/i3/scripts/dmenubar.sh
-bindsym $mod+b exec sh ~/.config/i3/scripts/btmenu.sh
-bindsym $mod+t exec sh ~/.config/i3/scripts/todo.sh
-bindsym $mod+F1 exec firefox
-bindsym $mod+F2 exec gnome-calculator
-# manual Lock
-bindsym $mod+x exec --no-startup-id ~/.config/blurlocksh/lock.sh
-bindsym $mod+Control+x exec --no-startup-id ~/.config/blurlocksh/sleep.sh
+bindsym $mod+Control+m exec --no-startup-id pulseaudio -k && sleep 1 && pulseaudio --start
+bindsym $mod+d exec --no-startup-id sh ~/.config/i3/scripts/dmenubar.sh
+
+# exit menu
+bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
 # Focus follows mouse
 #focus_follows_mouse no
@@ -79,12 +51,6 @@ client.urgent           $fg     $bg     $fg  $bg       $fg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 client.background       $bg
-
-###  CONTROLS  ###
-# Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
-bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
-bindsym XF86AudioMute exec --no-startup-id pamixer -t
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -223,12 +189,24 @@ for_window [class="qjackctl"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Wine System Tray"] border none 
-for_window [title="Calls"] floating enable
-assign [title="Calls"] output DP-5
 
-# i3lock border none
-for_window [class="i3lock"] border none
+# Plasma compatibility improvements
+for_window [class="yakuake"] floating enable
+for_window [class="systemsettings"] floating enable
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
+no_focus [class="plasmashell" window_type="notification"]
 
+# Also use this to kill Plasma desktop view
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
 ### settings for i3-gaps: ###
 
