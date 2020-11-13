@@ -1,16 +1,15 @@
 # ninelore's dotfiles
-My Arch/Manjaro i3 and qtile dotfiles (qtile dots WIP)
+My Arch/Manjaro i3 standalone dotfiles
 
 
 # To-Do
 * dmenu scripts: get colors from Xrdb
 
 # Installation
-**I recommend using the yay pacman/AUR wrapper. It's also required to use the package list txt coming soon to automaticly install all requirements**
+**I recommend using the yay pacman/AUR wrapper.**
+The repo root resembles $HOME. Add missing dots to filenames where applicapable
 
-The installation script is WIP!!!!. As of now it only installs dependencys over yay and installs oh-my-zsh
-
-just put the files where they belong, add a dot to the files that belong directly to your home folder and adjust configs where needed
+**WIP**
 
 # FAQ
 tbd
