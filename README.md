@@ -1,13 +1,16 @@
 # ninelore's dotfiles
-My Arch/Manjaro i3 standalone dotfiles
-
+My dotfiles    
+I'm using the following Window Manager:
+* i3wm
+* qtile
+* awesome
 
 # To-Do
-* dmenu scripts: get colors from Xrdb
+* everything WIP and Subject to change
 
 # Installation
 **I recommend using the yay pacman/AUR wrapper.**
-The repo root resembles $HOME. Add missing dots to filenames where applicapable
+The root of the repo resembles $HOME (you need to add the dot to everything in the repo root)
 
 **WIP**
 
@@ -15,9 +18,4 @@ The repo root resembles $HOME. Add missing dots to filenames where applicapable
 tbd
 
 # Credits
-https://github.com/petvas/i3lock-blur
-
-# Pictures
-![Picture1](previewPics/Preview1.png)
-![Picture2](previewPics/PreviewDmenubar.png)
-![Picture3](previewPics/PreviewDmenuTasks.png)
+tbd
