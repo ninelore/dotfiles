@@ -12,12 +12,10 @@ Xft.hintstyle:  hintfull
 !-------------------------------------------------------------------------------
 ! URxvt settings
 !-------------------------------------------------------------------------------
-!URxvt.modifier: mod1
+URxvt.modifier: control
 URxvt*loginShell: true
 URxvt.borderless: true
-URxvt*dynamicColors: on
-!URxvt.geometry: 90x20
-URxvt.internalBorder: 8
+URxvt.internalBorder: 4
 URxvt.lineSpace: 1
 URxvt.saveLines: 0
 URxvt*termName: rxvt-unicode-256color
@@ -31,15 +29,21 @@ URxvt.iso14755_52:          false
 ! Disable Perl extension
 ! If you do not use the Perl extension features, you can improve the security
 ! and speed by disabling Perl extensions completely.
-!URxvt.perl-ext:
-!URxvt.perl-ext-common: 
+URxvt.perl-ext: default,url-select
+URxvt.perl-ext-common: clipboard,resize-font
 
 ! clipboard
+URxvt.clipboard.autocopy: true
+URxvt.keysym.C-c: perl:clipboard:copy
+URxvt.keysym.C-v: perl:clipboard:paste
 
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
 
 !! Fonts
-URxvt.font: xft:SourceCodePro:size=11
-URxvt*boldFont: xft:SourceCodePro:size=11
+URxvt.font: xft:SourceCodePro:size=10
+URxvt*boldFont: xft:SourceCodePro:size=10
 URxvt.allow_bold:           false
 URxvt*boldMode:             true
 ! Fix font space
@@ -47,7 +51,7 @@ URxvt*letterSpace:          -1
 
 
 ! Scrollbar
-URxvt.scrollStyle:          rxvt
+!URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Cursor
@@ -57,43 +61,31 @@ URxvt.cursorUnderline:      false
 ! Pointer
 URxvt.pointerBlank:         false
 
+! COLORS
+*foreground: #c3c7d1 
+*background: #161925
 
-#define nord0 #2E3440
-#define nord1 #3B4252
-#define nord2 #434C5E
-#define nord3 #4C566A
-#define nord4 #D8DEE9
-#define nord5 #E5E9F0
-#define nord6 #ECEFF4
-#define nord7 #8FBCBB
-#define nord8 #88C0D0
-#define nord9 #81A1C1
-#define nord10 #5E81AC
-#define nord11 #BF616A
-#define nord12 #D08770
-#define nord13 #EBCB8B
-#define nord14 #A3BE8C
-#define nord15 #B48EAD
-
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
-*fading: 35
-*fadeColor: nord3
-
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+! Black
+*color0:  #282c34
+*color8:  #282c34
+! Red
+*color1:  #ed254e
+*color9:  #ed254e
+! Green
+*color2:  #71f79f
+*color10: #71f79f
+! Yellow
+*color3:  #f9dc5c
+*color11: #f9dc5c
+! Blue
+*color4:  #7cb7ff
+*color12: #7cb7ff
+! Magenta
+*color5:  #c74ded
+*color13: #c74ded
+! Cyan (both not tango)
+*color6:  #00c1e4
+*color14: #00c1e4
+! Grey / White
+*color7:  #dcdfe4
+*color15: #dcdfe4
