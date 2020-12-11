@@ -15,7 +15,7 @@ Xft.hintstyle:  hintfull
 rofi.modi:                           combi,drun,run,calc
 rofi.lines:                          8
 rofi.font:                           Overpass 12
-rofi.combi-modi:                     calc,drun,run
+rofi.combi-modi:                     drun,run,calc
 rofi.hide-scrollbar:                 true
 ! Colors: 			     'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
 rofi.color-normal:                   #161925,  #c3c7d1,  #161925,  #282c34,  #c3c7d1
@@ -27,7 +27,7 @@ rofi.color-window:                   #161925,   #282c34,   #dcdfe4
 !-------------------------------------------------------------------------------
 ! URxvt settings
 !-------------------------------------------------------------------------------
-URxvt.modifier: control
+URxvt.modifier: Control
 URxvt*loginShell: true
 URxvt.borderless: true
 URxvt.internalBorder: 4
@@ -49,8 +49,8 @@ URxvt.perl-ext-common: clipboard,resize-font
 
 ! clipboard
 URxvt.clipboard.autocopy: true
-URxvt.keysym.C-c: perl:clipboard:copy
-URxvt.keysym.C-v: perl:clipboard:paste
+URxvt.keysym.Control-Shift-c: perl:clipboard:copy
+URxvt.keysym.Control-Shift-v: perl:clipboard:paste
 
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: /usr/bin/xdg-open
