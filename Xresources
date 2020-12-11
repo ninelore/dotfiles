@@ -10,6 +10,21 @@ Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
 
 !-------------------------------------------------------------------------------
+! rofi settings
+!-------------------------------------------------------------------------------
+rofi.modi:                           combi,drun,run,calc
+rofi.lines:                          8
+rofi.font:                           Overpass 12
+rofi.combi-modi:                     calc,drun,run
+rofi.hide-scrollbar:                 true
+! Colors: 			     'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-normal:                   #161925,  #c3c7d1,  #161925,  #282c34,  #c3c7d1
+rofi.color-urgent:                   #161925,  #ed254e,  #161925,  #282c34,  #ed254e
+rofi.color-active:                   #161925,  #dcdfe4,  #161925,  #282c33,  #dcdfe4
+!                  		     'background', 'border', 'separator'
+rofi.color-window:                   #161925,   #282c34,   #dcdfe4
+
+!-------------------------------------------------------------------------------
 ! URxvt settings
 !-------------------------------------------------------------------------------
 URxvt.modifier: control
