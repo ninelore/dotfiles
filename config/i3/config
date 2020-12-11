@@ -10,7 +10,8 @@ font pango:Overpass 10
 
 # Bar as System tray only
 bar {
-	mode invisible
+	mode show
+	status_command i3status
 	output primary
 	tray_output primary
 	position top
@@ -23,25 +24,27 @@ bindsym $mod+Control+u bar mode show
 # autostart
 exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id pulseaudio --start
-exec --no-startup-id exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id ~/.config/picom.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id flameshot
 exec --no-startup-id parcellite -d
+exec --no-startup-id xset s 300 5; xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 
 # application binds
-# start a terminal
+bindsym $mod+d rofi -show combi
 bindsym $mod+Return exec urxvt
 bindsym $mod+o exec --no-startup-id ~/.config/picom.sh
 bindsym Print exec --no-startup-id flameshot gui -d 2000
-bindsym $mod+Shift+x --release exec --no-startup-id xkill
+bindsym $mod+Shift+x exec --no-startup-id xkill
 bindsym $mod+m exec pavucontrol
-bindsym $mod+Control+m exec pulseaudio -k && sleep 1 && pulseaudio --start
-bindsym $mod+Shift+Control+m exec pulseaudio --start
-bindsym $mod+v exec qjackctl
+bindsym $mod+Control+m exec --no-startup-id pulseaudio -k && sleep 1 && pulseaudio --start
+bindsym $mod+Shift+Control+m exec --no-startup-id pulseaudio --start
 bindsym $mod+F1 exec firefox
 bindsym $mod+F2 exec gnome-calculator
+bindsym $mod+x --release exec --no-startup-id xset s activate
 
 # Focus follows mouse
 #focus_follows_mouse no
@@ -52,7 +55,7 @@ default_floating_border 1pixel
 # Hide borders
 hide_edge_borders none
 # change borders
-#bindsym $mod+u border none
+bindsym $mod+Control+q border none
 bindsym $mod+Control+y border pixel 1
 bindsym $mod+Control+a border normal
 

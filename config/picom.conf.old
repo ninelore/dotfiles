@@ -1,0 +1,43 @@
+log-level = "warn";
+frame-opacity = 0.7;
+inactive-opacity-override = false;
+
+# Fading
+fading = true;
+fade-in-step = 0.03;
+fade-out-step = 0.03;
+fade-exclude = [ ];
+
+# Other
+backend = "glx";
+# use-ewmh-active-win = true;
+detect-rounded-corners = true;
+detect-client-opacity = true;
+refresh-rate = 0;
+vsync = true;
+focus-exclude = [ 
+	"class_g = 'Cairo-clock'",
+];
+detect-transient = true;
+detect-client-leader = true;
+invert-color-include = [ ];
+resize-damage = 1;
+
+use-damage = true;
+
+# Window type settings
+wintypes:
+{
+  tooltip = { fade = true; shadow = true; opacity = 0.75; focus = true; full-shadow = false; };
+  dock = { shadow = false; }
+  dnd = { shadow = false; }
+  popup_menu = { opacity = 0.9; }
+  dropdown_menu = { opacity = 0.9; }
+};
+
+blur:
+{
+method = "dual_kawase";
+size = 25;
+deviation = 5.0;
+}
