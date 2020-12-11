@@ -6,7 +6,10 @@ I'm using the following Window Manager:
 * awesome (WIP)
 
 # To-Do
-* everything WIP and Subject to change
+
+- Fix some zsh prompt characters in urxvt
+- LF better Bar
+- Control-Shift-C/V in urxvt
 
 # Installation
 **I recommend using the yay pacman/AUR wrapper.**
