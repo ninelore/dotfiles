@@ -10,15 +10,28 @@ font pango:Overpass 10
 
 # Bar as System tray only
 bar {
-	mode show
+	mode hide
+	hidden_state hide
+	modifier $mod+Control
 	status_command i3status
 	output primary
 	tray_output primary
 	position top
+	colors {
+        	background $bg
+        	statusline $fg
+        	separator #666666
+		
+        	focused_workspace  $white    $bg       $fg
+        	active_workspace   $black    $bg       $fg
+        	inactive_workspace $black    $bg       $fg
+        	urgent_workspace   $red      $bg       $fg
+        	binding_mode       $black    $bg       $fg
+	}
 }
-bindsym $mod+u bar mode invisible
-bindsym $mod+Shift+u bar mode hide
-bindsym $mod+Control+u bar mode show
+bindsym $mod+u bar mode hide
+bindsym $mod+Shift+u bar mode invisible
+bindsym $mod+Control+u bar mode dock
 
 ###  Apps  ###
 # autostart
@@ -29,12 +42,13 @@ exec --no-startup-id eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id ~/.config/picom.sh
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id flameshot
 exec --no-startup-id parcellite -d
 exec --no-startup-id xset s 300 5; xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 
 # application binds
-bindsym $mod+d rofi -show combi
+bindsym $mod+d exec rofi -show combi
 bindsym $mod+Return exec urxvt
 bindsym $mod+o exec --no-startup-id ~/.config/picom.sh
 bindsym Print exec --no-startup-id flameshot gui -d 2000
@@ -242,6 +256,5 @@ bindsym $mod+Control+d gaps inner all set 0
 
 gaps inner 0
 gaps outer 0
-smart_borders off
 #smart_borders no_gaps
 #smart_gaps on
