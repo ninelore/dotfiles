@@ -12,9 +12,8 @@ I'm using the following Window Manager:
 **I recommend using the yay pacman/AUR wrapper.**
 The root of the repo resembles $HOME (you need to add the dot to everything in the repo root)
 
-`yay -S $(grep requirements.txt)` (WIP)
-
-**WIP**
+To install all required packages (Arch Linux) run
+`yay -Syu --needed $(grep requirements.txt)`
 
 # FAQ
 tbd
