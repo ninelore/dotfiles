@@ -20,4 +20,5 @@ To install all required packages (Arch Linux) run this: **requires yay**
 nothing atm
 
 ## Credits
-tbd
+[awesomewm config template](https://gitlab.com/bloxiebird/linux-awesomewm-modular-starter-kit)    
+more tba
