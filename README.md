@@ -5,21 +5,19 @@ I'm using the following Window Manager:
 * qtile (WIP)
 * awesome (WIP)
 
-# To-Do
+## To-Do
 
-- Fix some zsh prompt characters in urxvt
-- LF better Bar
-- Control-Shift-C/V in urxvt
+- i3status
 
-# Installation
+## Installation
 **I recommend using the yay pacman/AUR wrapper.**
 The root of the repo resembles $HOME (you need to add the dot to everything in the repo root)
 
-To install all required packages (Arch Linux) run
+To install all required packages (Arch Linux) run this: **requires yay**
 `yay -Syu --needed $(grep requirements.txt)`
 
-# FAQ
-tbd
+## FAQ
+nothing atm
 
-# Credits
+## Credits
 tbd
