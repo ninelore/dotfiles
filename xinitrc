@@ -49,9 +49,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 export PATH=$HOME/.apps:$PATH
-#export KDEWM="/usr/bin/i3 -c %HOME/.config/i3/config-kde"
-#export DESKTOP_SESSION=plasma
 
 numlockx on
 exec i3
-#exec startplasma-x11
+#exec qtile
+#exec awesome

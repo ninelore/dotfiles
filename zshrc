@@ -22,7 +22,17 @@ export ZSH="/home/ninelore/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster-short"
+#ZSH_THEME="agnoster-short"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="nicoulaj"
+
+if [ "$TERM" = "linux" ]; then
+    _SEDCMD='s/.*\*color\([0-9]\{1,\}\).*#\([0-9a-fA-F]\{6\}\).*/\1 \2/p'
+    for i in $(sed -n "$_SEDCMD" $HOME/.Xresources | awk '$1 < 16 {printf "\\e]P%X%s", $1, $2}'); do
+        echo -en "$i"
+    done
+    clear
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -111,7 +121,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias bnet='nohup lutris lutris:rungame/battlenet'
 bindkey -v
 
 alias v='vim'
@@ -120,12 +129,12 @@ alias untar='tar -zxvf'
 alias ls='ls --color=auto'
 alias l.='ls -d .* --color=auto'
 alias sv='sudo vim'
-alias edit='vim'
 alias root='sudo -i'
 alias su='sudo -i'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 alias upall="yay -Syu --noconfirm"
 alias poff="systemctl poweroff -i"
 alias reboot="systemctl reboot"
-alias winboot="sudo extlinux -o windows /boot/syslinux && systemctl reboot"
 alias r='ranger'
+alias sr='sudo ranger'
+alias c='clear'
