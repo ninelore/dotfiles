@@ -15,8 +15,11 @@ detect-rounded-corners = true;
 detect-client-opacity = true;
 refresh-rate = 0;
 vsync = true;
-focus-exclude = [ 
-	"class_g = 'Cairo-clock'",
+focus-exclude = [
+        "class_g = 'Cairo-clock'",
+        "class_g ?= 'rofi'",
+        "class_g ?= 'slop'",
+        "class_g ?= 'Steam'"
 ];
 detect-transient = true;
 detect-client-leader = true;
@@ -28,11 +31,19 @@ use-damage = true;
 # Window type settings
 wintypes:
 {
-  tooltip = { fade = true; shadow = true; opacity = 0.75; focus = true; full-shadow = false; };
-  dock = { shadow = false; }
-  dnd = { shadow = false; }
-  popup_menu = { opacity = 0.9; }
-  dropdown_menu = { opacity = 0.9; }
+        tooltip = { fade = true; shadow = false; focus = false; };
+        normal = { shadow = false; };
+        dock = { shadow = false; };
+        dnd = { shadow = false; };
+        popup_menu = { shadow = true; focus = false; opacity = 0.90; };
+        dropdown_menu = { shadow = false; focus = false; };
+        above = { shadow = true; };
+        splash = { shadow = false; };
+        utility = { focus = false; shadow = false; };
+        notification = { shadow = false; };
+        desktop = { shadow = true };
+        menu = { focus = false };
+        dialog = { shadow = true; }; 
 };
 
 blur:
