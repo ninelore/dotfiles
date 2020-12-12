@@ -13,7 +13,7 @@ I'm using the following Window Manager:
 **I recommend using the yay pacman/AUR wrapper.**
 The root of the repo resembles $HOME (you need to add the dot to everything in the repo root)
 
-To install all required packages (Arch Linux) run this: **requires yay**
+To install all required packages (Arch Linux) run this: **requires yay**     
 `yay -Syu --needed $(grep requirements.txt)`
 
 ## FAQ
