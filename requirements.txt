@@ -7,6 +7,10 @@ ffmpeg
 firefox
 flameshot
 gnome-calculator
+gvfs
+gvfs-smb
+gvfs-mtp
+gvfs-nfs
 htop
 i3-gaps
 i3blocks
@@ -21,6 +25,7 @@ pamixer
 pamtester
 parcellite
 pavucontrol
+pcmanfm-gtk3
 picom-tryone-git
 polybar
 powerline-fonts-git
@@ -33,7 +38,6 @@ ranger
 rofi
 rofi-calc
 rofi-dmenu
-sl
 ttf-liberation
 ttf-roboto
 ttf-roboto-mono
