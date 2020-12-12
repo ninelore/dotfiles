@@ -15,6 +15,11 @@ htop
 i3-gaps
 i3blocks
 i3status
+kvantum-qt5
+kvantum-theme-sweet-git
+lxappearance-gtk3
+lxinput-gtk3
+lxrandr-gtk3
 neofetch
 network-manager-applet
 networkmanager
@@ -33,11 +38,14 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 pulseaudio-jack
+qt5ct
 qtile
 ranger
 rofi
 rofi-calc
 rofi-dmenu
+sweet-cursor-theme-git
+sweet-theme-git
 ttf-liberation
 ttf-roboto
 ttf-roboto-mono
