@@ -43,6 +43,7 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id ~/.config/picom.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
+exec --no-startup-id cbatticon -u 20 -c "systemctl hibernate" -l 15 -r 3
 exec --no-startup-id flameshot
 exec --no-startup-id parcellite -d
 exec --no-startup-id xset s 300 5; xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock

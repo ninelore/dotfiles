@@ -1,6 +1,7 @@
 alacritty
 alsa-utils
 awesome
+cbatticon
 dunst
 feh
 ffmpeg
