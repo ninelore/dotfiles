@@ -16,6 +16,8 @@ The root of the repo resembles $HOME (you need to add the dot to everything in t
 To install all required packages (Arch Linux) run this: **requires yay**     
 `yay -Syu --needed $(grep requirements.txt)`
 
+NOTE: `cbatticon` is included as autostart in the (i3wm) config. Comment it out for non-battery devices
+
 ## FAQ
 nothing atm
 
