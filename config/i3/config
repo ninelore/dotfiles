@@ -13,8 +13,9 @@ bar {
 	mode hide
 	hidden_state hide
 	modifier $mod+Control
-	status_command i3status
 	output primary
+	status_command i3status
+	#status_command i3status -c $HOME/.config/i3/i3status
 	tray_output primary
 	position top
 	colors {
@@ -30,24 +31,22 @@ bar {
 	}
 }
 bindsym $mod+u bar mode hide
-bindsym $mod+Shift+u bar mode invisible
+#bindsym $mod+Shift+u bar mode invisible
 bindsym $mod+Control+u bar mode dock
 
 ###  Apps  ###
 # autostart
 exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id pulseaudio --start
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)
+exec --no-startup-id sleep 1 && pulseaudio -k && sleep 1 && pulseaudio --start
+exec --no-startup-id /usr/bin/lxpolkit
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id ~/.config/picom.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id cbatticon -u 20 -c "systemctl hibernate" -l 15 -r 3
+exec --no-startup-id cbatticon -u 20 -c "systemctl hibernate" -l 15 -r 3 -i symbolic
 exec --no-startup-id flameshot
 exec --no-startup-id parcellite -d
 exec --no-startup-id xset s 300 5; xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
-exec --no-startup-id pulseaudio -k && sleep 1 && pulseaudio --start
 
 # application binds
 bindsym $mod+d exec rofi -show combi

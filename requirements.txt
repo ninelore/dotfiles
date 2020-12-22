@@ -21,6 +21,7 @@ kvantum-theme-sweet-git
 lxappearance-gtk3
 lxinput-gtk3
 lxrandr-gtk3
+lxsession-gtk3
 neofetch
 network-manager-applet
 networkmanager
@@ -45,7 +46,6 @@ ranger
 rofi
 rofi-calc
 rofi-dmenu
-sweet-cursor-theme-git
 sweet-theme-git
 ttf-liberation
 ttf-roboto
@@ -54,6 +54,7 @@ ueberzug
 unarchiver
 vim
 w3m
+xcursor-sweet
 xdg-utils
 xinit-xsession
 xorg-xkill
@@ -63,4 +64,3 @@ xorg-xrdb
 xsecurelock
 xss-lock
 yay
-zathura
