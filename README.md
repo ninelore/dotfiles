@@ -8,6 +8,7 @@ I'm using the following Window Manager:
 ## To-Do
 
 - i3status
+- next wm: awesome
 
 ## Installation
 **I recommend using the yay pacman/AUR wrapper.**
@@ -22,6 +23,5 @@ NOTE: `cbatticon` is included as autostart in the (i3wm) config. Comment it out 
 nothing atm
 
 ## Credits
-[awesomewm config template](https://gitlab.com/bloxiebird/linux-awesomewm-modular-starter-kit)    
 [yt script](https://github.com/sayan01/scripts/blob/master/yt)
 more tba
