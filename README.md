@@ -23,4 +23,5 @@ nothing atm
 
 ## Credits
 [awesomewm config template](https://gitlab.com/bloxiebird/linux-awesomewm-modular-starter-kit)    
+[yt script](https://github.com/sayan01/scripts/blob/master/yt)
 more tba
