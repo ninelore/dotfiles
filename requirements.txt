@@ -7,6 +7,7 @@ feh
 ffmpeg
 firefox
 flameshot
+fzf
 gnome-calculator
 gvfs
 gvfs-smb
@@ -22,6 +23,7 @@ lxappearance-gtk3
 lxinput-gtk3
 lxrandr-gtk3
 lxsession-gtk3
+mpv
 neofetch
 network-manager-applet
 networkmanager
@@ -64,3 +66,4 @@ xorg-xrdb
 xsecurelock
 xss-lock
 yay
+youtube-dl

@@ -116,7 +116,6 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 
 alias v='vim'
-alias zat='zathura'
 alias untar='tar -zxvf'
 alias ls='ls --color=auto'
 alias l.='ls -d .* --color=auto'
@@ -130,3 +129,5 @@ alias reboot="systemctl reboot"
 alias r='ranger'
 alias sr='sudo ranger'
 alias c='clear'
+alias yt='$HOME/.local/bin/yt'
+alias hb='$HOME/.local/bin/$* '
