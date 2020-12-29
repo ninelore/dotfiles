@@ -92,7 +92,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "open terminal", terminal },
-				    { "open rofi menu", "rofi -show combi" } 
+				    { "open launcher", "rofi -show combi" } 
                                   }
                         })
 
