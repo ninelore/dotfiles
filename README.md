@@ -7,8 +7,12 @@ I'm using the following Window Manager:
 
 ## To-Do
 
-- i3status
-- next wm: awesome
+- i3: i3status
+- awesome: wibar opacity
+- awesome: better tasklist
+- awesome: edit/replace/remove mymainmenu
+- awesome: edit xresources and gtk theme
+- Xrdb: replace cyan with the actual sweet cyan
 
 ## Installation
 **I recommend using the yay pacman/AUR wrapper.**

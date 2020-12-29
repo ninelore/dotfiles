@@ -46,7 +46,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua") -- DEFAULT
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "xrescources") -- Change here to something in user themes folder
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "gtk") -- Change here to something in user themes folder
 beautiful.init(theme_path)
 
 -- Default terminal and editor to run.
@@ -60,22 +60,22 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    -- awful.layout.suit.floating,
+    --awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    --awful.layout.suit.tile.top,
     awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
+    --awful.layout.suit.spiral.dwindle,
+    --awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
+    --awful.layout.suit.corner.ne,
+    --awful.layout.suit.corner.sw,
+    --awful.layout.suit.corner.se,
 }
 -- }}}
 
@@ -189,10 +189,55 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
+    --[[s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons
+    } ]]--
+
+    s.mytasklist = awful.widget.tasklist {
+        screen   = s,
+        filter   = awful.widget.tasklist.filter.currenttags,
+        buttons  = tasklist_buttons,
+        layout   = {
+            spacing_widget = {
+                {
+                    forced_width  = 5,
+                    forced_height = 24,
+                    thickness     = 1,
+                    color         = '#777777',
+                    widget        = wibox.widget.separator
+                },
+                valign = 'center',
+                halign = 'center',
+                widget = wibox.container.place,
+            },
+            spacing = 1,
+            layout  = wibox.layout.fixed.horizontal
+        },
+        -- Notice that there is *NO* wibox.wibox prefix, it is a template,
+        -- not a widget instance.
+        widget_template = {
+            {
+                wibox.widget.base.make_widget(),
+                forced_height = 5,
+                id            = 'background_role',
+                widget        = wibox.container.background,
+            },
+            {
+                {
+                    id     = 'clienticon',
+                    widget = awful.widget.clienticon,
+                },
+                margins = 5,
+                widget  = wibox.container.margin
+            },
+            nil,
+            create_callback = function(self, c, index, objects) --luacheck: no unused args
+                self:get_children_by_id('clienticon')[1].client = c
+            end,
+            layout = wibox.layout.align.vertical,
+        },
     }
 
     -- Create the wibox
@@ -287,7 +332,7 @@ globalkeys = gears.table.join(
     	      {description = "pavucontrol", group = "customkeys"}),
     awful.key({ modkey, "Control" }, "s", function () awful.spawn("pulseaudio -k && sleep 1 && pulseaudio --start") end,
     	      {description = "restart pulseaudio", group = "customkeys"}),
-    awful.key({ modkey, 	  }, "F1", function () awful.spawn("firefox") end,
+    awful.key({ modkey, 	  }, "F1", function () awful.util.spawn("firefox") end,
     	      {description = "launch Firefox", group = "customkeys"}),
     awful.key({ modkey, 	  }, "F2", function () awful.spawn("gnome-calculator") end,
     	      {description = "launch calculator", group = "customkeys"}),
@@ -606,4 +651,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart
-awful.spawn.with_shell("~/.config/awesome/autorun.sh")
+awful.spawn.with_shell("$HOME/.config/awesome/autorun.sh")
