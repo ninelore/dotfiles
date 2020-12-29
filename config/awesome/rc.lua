@@ -45,18 +45,17 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+--beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua") -- DEFAULT
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "xrescources") -- Change here to something in user themes folder
+beautiful.init(theme_path)
 
--- This is used later as the default terminal and editor to run.
+-- Default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
+-- MODKEY
+-- Mod4 = Super ; Mod1 = Alt ; Control ; Shift
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
@@ -228,14 +227,14 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey, "Shift"   }, "F1",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
-              {description = "go back", group = "tag"}),
+    --[[awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+              {description = "go back", group = "tag"}),]]--
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -272,13 +271,43 @@ globalkeys = gears.table.join(
         end,
         {description = "go back", group = "client"}), ]]--
 
-    -- Standard program
+    -- Applications
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey 		  }, "d", function () awful.spawn("rofi -show combi") end,
     	      {description = "open rofi menu", group = "launcher"}),
+ 
+    awful.key({ modkey, "Shift"	  }, "o", function () awful.spawn("$HOME/.config/picom.sh") end,
+    	      {description = "picon toggle", group = "customkeys"}),
+    awful.key({ modkey, 	  }, "Escape", function () awful.spawn("xkill") end,
+    	      {description = "start xkill", group = "customkeys"}),
+    awful.key({ modkey, 	  }, "s", function () awful.spawn("pavucontrol") end,
+    	      {description = "pavucontrol", group = "customkeys"}),
+    awful.key({ modkey, "Control" }, "s", function () awful.spawn("pulseaudio -k && sleep 1 && pulseaudio --start") end,
+    	      {description = "restart pulseaudio", group = "customkeys"}),
+    awful.key({ modkey, 	  }, "F1", function () awful.spawn("firefox") end,
+    	      {description = "launch Firefox", group = "customkeys"}),
+    awful.key({ modkey, 	  }, "F2", function () awful.spawn("gnome-calculator") end,
+    	      {description = "launch calculator", group = "customkeys"}),
+    awful.key({ modkey, "Shift"	  }, "w", function () awful.spawn("lxrandr") end,
+    	      {description = "picom toggle", group = "customkeys"}),
+
+    awful.key({  		  }, "Print", function () awful.spawn("notify-send 'Screenshot in 2 Seconds!' && flameshot gui -d 2000") end,
+    	      {description = "Screenshot GUI", group = "customkeys"}),
+    awful.key({ modkey, 	  }, "x", function () awful.spawn("xset s activate") end,
+    	      {description = "Lock Screen", group = "customkeys"}),
+    awful.key({ modkey, "Control" }, "x", function () awful.spawn("systemctl suspend") end,
+    	      {description = "suspend", group = "customkeys"}),
+    awful.key({			  }, "XF86AudioMute", function () awful.spawn("pamixer -t") end,
+    	      {description = "Mute PulseAudio", group = "customkeys"}),
+    awful.key({			  }, "XF86AudioRaiseVolume", function () awful.spawn("pamixer -i 5 %% notify-send 'Volume: $(pamixer --get-volume-human)'") end,
+    	      {description = "PulseAudio Vol +5", group = "customkeys"}),
+    awful.key({			  }, "XF86AudioLowerVolume", function () awful.spawn("pamixer -d 5") end,
+    	      {description = "PulseAudio Vol +5", group = "customkeys"}),
+
+
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -292,9 +321,9 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    awful.key({ modkey,           }, "q", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Control"   }, "space", function () awful.layout.inc(-1)                end,
+    awful.key({ modkey, "Control" }, "q", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
@@ -325,7 +354,13 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    awful.key({ modkey }, "b",
+	      function ()
+		    myscreen = awful.screen.focused()
+		    myscreen.mywibox.visible = not myscreen.mywibox.visible
+	      end,
+	      {description = "toggle wibar visibility", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
@@ -452,6 +487,7 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
+		     -- size_hints_honor = false
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
@@ -473,18 +509,26 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
-          "xtightvncviewer"},
+          "xtightvncviewer",
+	  -- below added by 9L
+	  "feh",
+	  "Gnome-calculator",
+	  "nitrogen",
+	  "(?i)pavucontrol",
+  	  "Calls"
+  	},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
         -- and the name shown there might not match defined rules here.
         name = {
-          "Event Tester",  -- xev.
+          "Event Tester"  -- xev.
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
-        }
+	  "task_dialog"
+  	}
       }, properties = { floating = true }},
 
     -- Add titlebars to normal clients and dialogs
@@ -493,8 +537,7 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { name = "Calls" }, properties = { screen = 2 } },
 }
 -- }}}
 
@@ -561,3 +604,6 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- Autostart
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
