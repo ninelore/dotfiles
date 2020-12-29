@@ -3,7 +3,7 @@ My dotfiles
 I'm using the following Window Manager:
 * awesome
 * i3wm
-* qtile (WIP)
+* qtile (tbd, unfinished)
 
 ## To-Do
 
