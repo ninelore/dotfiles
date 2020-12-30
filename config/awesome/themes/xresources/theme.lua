@@ -14,10 +14,10 @@ local themes_path = gfs.get_themes_dir()
 local theme = dofile(themes_path.."default/theme.lua")
 -- load vector assets' generators for this theme
 
-theme.font          = "sans 8"
+theme.font          = "Overpass 9"
 
 theme.bg_normal     = xrdb.background
-theme.bg_focus      = xrdb.color12
+theme.bg_focus      = xrdb.color14
 theme.bg_urgent     = xrdb.color9
 theme.bg_minimize   = xrdb.color8
 theme.bg_systray    = theme.bg_normal
@@ -27,8 +27,9 @@ theme.fg_focus      = theme.bg_normal
 theme.fg_urgent     = theme.bg_normal
 theme.fg_minimize   = theme.bg_normal
 
-theme.useless_gap   = dpi(3)
-theme.border_width  = dpi(2)
+--theme.useless_gap   = dpi(3)
+theme.useless_gap   = dpi(0)
+theme.border_width  = dpi(0)
 theme.border_normal = xrdb.color0
 theme.border_focus  = theme.bg_focus
 theme.border_marked = xrdb.color10
@@ -121,7 +122,7 @@ local is_dark_bg = (bg_numberic_value < 383)
 -- Generate wallpaper:
 local wallpaper_bg = xrdb.color8
 local wallpaper_fg = xrdb.color7
-local wallpaper_alt_fg = xrdb.color12
+local wallpaper_alt_fg = xrdb.color14
 if not is_dark_bg then
     wallpaper_bg, wallpaper_fg = wallpaper_fg, wallpaper_bg
 end

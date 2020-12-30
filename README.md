@@ -7,12 +7,12 @@ I'm using the following Window Manager:
 
 ## To-Do
 
+- alacritty: fix vim mouse
 - i3: i3status
-- awesome: wibar opacity
-- awesome: better tasklist
 - awesome: edit/replace/remove mymainmenu
-- awesome: edit xresources and gtk theme
-- Xrdb: replace cyan with the actual sweet cyan
+- awesome: edit gaps without restart keybind
+- awesome: replace some tray applets with wiboxes
+- awesome: rice taglist to be a bit wider
 
 ## Installation
 **I recommend using the yay pacman/AUR wrapper.**
@@ -22,6 +22,18 @@ To install all required packages (Arch Linux) run this: **requires yay**
 `yay -Syu --needed $(grep requirements.txt)`
 
 NOTE: `cbatticon` is included as autostart in the (i3wm) config. Comment it out for non-battery devices
+
+### Software i use
+(some are not included in the requirements.txt)
+
+- DM: [ly-enhanced](https://github.com/ninelore/ly-enhanced)
+- Browser: Firefox
+- Terminal Editor: Alacritty
+- Editor: vim
+- File Manager: ranger
+- Screenshots: Flameshot
+- Clipboard: Parcellite
+- (list unfinished)
 
 ## FAQ
 nothing atm

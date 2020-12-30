@@ -46,7 +46,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua") -- DEFAULT
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "gtk") -- Change here to something in user themes folder
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "gtk")
 beautiful.init(theme_path)
 
 -- Default terminal and editor to run.
@@ -70,7 +70,7 @@ awful.layout.layouts = {
     awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
+    --awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
     --awful.layout.suit.corner.ne,
@@ -189,59 +189,15 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    --[[s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
-    } ]]--
-
     s.mytasklist = awful.widget.tasklist {
-        screen   = s,
-        filter   = awful.widget.tasklist.filter.currenttags,
-        buttons  = tasklist_buttons,
-        layout   = {
-            spacing_widget = {
-                {
-                    forced_width  = 5,
-                    forced_height = 24,
-                    thickness     = 1,
-                    color         = '#777777',
-                    widget        = wibox.widget.separator
-                },
-                valign = 'center',
-                halign = 'center',
-                widget = wibox.container.place,
-            },
-            spacing = 1,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        -- Notice that there is *NO* wibox.wibox prefix, it is a template,
-        -- not a widget instance.
-        widget_template = {
-            {
-                wibox.widget.base.make_widget(),
-                forced_height = 5,
-                id            = 'background_role',
-                widget        = wibox.container.background,
-            },
-            {
-                {
-                    id     = 'clienticon',
-                    widget = awful.widget.clienticon,
-                },
-                margins = 5,
-                widget  = wibox.container.margin
-            },
-            nil,
-            create_callback = function(self, c, index, objects) --luacheck: no unused args
-                self:get_children_by_id('clienticon')[1].client = c
-            end,
-            layout = wibox.layout.align.vertical,
-        },
+	screen = s,
+	filter = awful.widget.tasklist.filter.minimizedcurrenttags,
+	buttons = tasklist_buttons,
+	layout = {spacing = 10, layout = wibox.layout.fixed.horizontal} -- ,
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s, opacity=0.7 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -324,13 +280,13 @@ globalkeys = gears.table.join(
     awful.key({ modkey 		  }, "d", function () awful.spawn("rofi -show combi") end,
     	      {description = "open rofi menu", group = "launcher"}),
  
-    awful.key({ modkey, "Shift"	  }, "o", function () awful.spawn("$HOME/.config/picom.sh") end,
+    awful.key({ modkey, "Shift"	  }, "o", function () awful.spawn.with_shell("$HOME/.config/picom.sh") end,
     	      {description = "picon toggle", group = "customkeys"}),
     awful.key({ modkey, 	  }, "Escape", function () awful.spawn("xkill") end,
     	      {description = "start xkill", group = "customkeys"}),
     awful.key({ modkey, 	  }, "s", function () awful.spawn("pavucontrol") end,
     	      {description = "pavucontrol", group = "customkeys"}),
-    awful.key({ modkey, "Control" }, "s", function () awful.spawn("pulseaudio -k && sleep 1 && pulseaudio --start") end,
+    awful.key({ modkey, "Control" }, "s", function () awful.spawni.with_shell("pulseaudio -k && sleep 1 && pulseaudio --start") end,
     	      {description = "restart pulseaudio", group = "customkeys"}),
     awful.key({ modkey, 	  }, "F1", function () awful.util.spawn("firefox") end,
     	      {description = "launch Firefox", group = "customkeys"}),
@@ -339,20 +295,30 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"	  }, "w", function () awful.spawn("lxrandr") end,
     	      {description = "picom toggle", group = "customkeys"}),
 
-    awful.key({  		  }, "Print", function () awful.spawn("notify-send 'Screenshot in 2 Seconds!' && flameshot gui -d 2000") end,
+    awful.key({  		  }, "Print", function () awful.spawn.with_shell("notify-send 'Screenshot in 2 Seconds!' && flameshot gui -d 2000") end,
     	      {description = "Screenshot GUI", group = "customkeys"}),
     awful.key({ modkey, 	  }, "x", function () awful.spawn("xset s activate") end,
     	      {description = "Lock Screen", group = "customkeys"}),
     awful.key({ modkey, "Control" }, "x", function () awful.spawn("systemctl suspend") end,
     	      {description = "suspend", group = "customkeys"}),
-    awful.key({			  }, "XF86AudioMute", function () awful.spawn("pamixer -t") end,
+    awful.key({			  }, "XF86AudioMute", function () 
+	       awful.spawn.with_shell("pamixer -t && notify-send $(pamixer --get-volume-human)") end,
     	      {description = "Mute PulseAudio", group = "customkeys"}),
-    awful.key({			  }, "XF86AudioRaiseVolume", function () awful.spawn("pamixer -i 5 %% notify-send 'Volume: $(pamixer --get-volume-human)'") end,
+    awful.key({			  }, "XF86AudioRaiseVolume", function () 
+	       awful.spawn.with_shell("pamixer -i 5 && notify-send $(pamixer --get-volume-human)") end,
     	      {description = "PulseAudio Vol +5", group = "customkeys"}),
-    awful.key({			  }, "XF86AudioLowerVolume", function () awful.spawn("pamixer -d 5") end,
+    awful.key({			  }, "XF86AudioLowerVolume", function () 
+	       awful.spawn.with_shell("pamixer -d 5 && notify-send $(pamixer --get-volume-human)") end,
     	      {description = "PulseAudio Vol +5", group = "customkeys"}),
 
 
+    -- useless gap
+    --[[ (WIP!)
+    awful.key({ modkey,	"Control" }, "i", function () lain.util.useless_gaps_resize(-2) end,
+    	      {description = "decrease useless gap by 2", group = "layout"}),
+    awful.key({ modkey,	"Shift" }, "i", function () beautiful.init({theme.useless_gap = theme.useless_gap + 1}) end,
+    	      {description = "increase useless gap by 2", group = "layout"}),
+    --]]
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),

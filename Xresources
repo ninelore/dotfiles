@@ -99,8 +99,8 @@ URxvt.pointerBlank:         false
 *color5:  #c74ded
 *color13: #c74ded
 ! Cyan (both not tango)
-*color6:  #00c1e4
-*color14: #00c1e4
+*color6:  #00d1a6
+*color14: #00d1a6
 ! Grey / White
 *color7:  #dcdfe4
 *color15: #dcdfe4
