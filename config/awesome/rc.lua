@@ -17,6 +17,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+-- Custom Widgets
+local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -83,10 +86,8 @@ awful.layout.layouts = {
 -- Create a launcher widget and a main menu
 myawesomemenu = {
    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
+   { "reload awesome", awesome.restart },
+   { "quit to tty/dm", function() awesome.quit() end },
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -195,9 +196,23 @@ awful.screen.connect_for_each_screen(function(s)
 	buttons = tasklist_buttons,
 	layout = {spacing = 10, layout = wibox.layout.fixed.horizontal} -- ,
     }
+    
+    -- CUSTOM WIDGETS
+
+    -- Spotify
+    s.myspotify = spotify_widget({
+	font = 'Ubuntu Mono 9',
+	play_icon = '/usr/share/icons/candy-icons/apps/scalable/com.spotify.Client.svg',
+	pause_icon = '/usr/share/icons/candy-icons/apps/scalable/com.spotify.Client.svg',
+	dim_when_paused = true,
+	dim_opacity = 0.5,
+	max_length = -1,
+	show_tooltip = false
+    })
+
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, opacity=0.7 })
+    s.mywibox = awful.wibar({ position = "top", screen = s, opacity=0.75 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -234,8 +249,6 @@ globalkeys = gears.table.join(
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    --[[awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
-              {description = "go back", group = "tag"}),]]--
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -263,14 +276,6 @@ globalkeys = gears.table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    --[[awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        {description = "go back", group = "client"}), ]]--
 
     -- Applications
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
@@ -286,7 +291,7 @@ globalkeys = gears.table.join(
     	      {description = "start xkill", group = "customkeys"}),
     awful.key({ modkey, 	  }, "s", function () awful.spawn("pavucontrol") end,
     	      {description = "pavucontrol", group = "customkeys"}),
-    awful.key({ modkey, "Control" }, "s", function () awful.spawni.with_shell("pulseaudio -k && sleep 1 && pulseaudio --start") end,
+    awful.key({ modkey, "Control" }, "s", function () awful.spawn.with_shell("pulseaudio -k && sleep 1 && pulseaudio --start") end,
     	      {description = "restart pulseaudio", group = "customkeys"}),
     awful.key({ modkey, 	  }, "F1", function () awful.util.spawn("firefox") end,
     	      {description = "launch Firefox", group = "customkeys"}),

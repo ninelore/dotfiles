@@ -59,6 +59,7 @@ w3m
 xcursor-sweet
 xdg-utils
 xinit-xsession
+xorg-xbacklight
 xorg-xkill
 xorg-xmodmap
 xorg-xrandr
