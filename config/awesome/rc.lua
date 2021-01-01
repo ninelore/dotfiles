@@ -18,10 +18,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 -- Custom Widgets
-local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
-local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
-local volumearc_widget = require("awesome-wm-widgets.volumearc-widget.volumearc")
-local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
+local lain = require("lain")
 
 
 -- {{{ Error handling
@@ -202,30 +199,26 @@ awful.screen.connect_for_each_screen(function(s)
     
     -- CUSTOM WIDGETS
 
-    -- Spotify
-    s.myspotify = spotify_widget({
-	font = 'Overpass 9',
-	play_icon = '/usr/share/icons/candy-icons/apps/scalable/spotify.svg',
-	pause_icon = '/usr/share/icons/candy-icons/apps/scalable/spotify.svg',
-	dim_when_paused = true,
-	dim_opacity = 0.5,
-	max_length = -1,
-	show_tooltip = false
-    })
-
-    s.mybrightness = brightness_widget({
-	font = 'Overpass 9',
-	get_brightness_cmd = 'xbacklight -get',
-	inc_brightness_cmd = 'xbacklight -inc 5',
-	dec_brightness_cmd = 'xbacklight -dec 5'
-    })
-
-    s.mybattery = batteryarc_widget({
-	show_current_level = true,
-	arc_thickness = 3,
-	show_current_level = true
-    })
-
+    mybattery = lain.widget.bat { 
+	notify = "off", 
+	timeout = 4,
+	settings = function()
+	    --widget:set_markup(bat_now.time .. "(" .. bat_now.perc .. "%)" .. bat_now.status)
+	    widget:set_markup("Bat: " .. bat_now.perc .. "%")
+	end
+    }
+    myvolume = lain.widget.alsa { 
+	cmd = "amixer -D pulse", 
+	settings = function()
+	    widget:set_markup("Vol: " .. volume_now.level .. "%")
+	end
+    }
+    mybacklight = awful.widget.watch("xbacklight -get", 10,
+        function(widget, stdout)
+	    local perc = tonumber(stdout:match("(%d+).%d"))
+	    widget:set_text("Brightness: "..perc.."%")
+	end
+    )--]]
 
     space_seperator = wibox.widget.textbox("  ")
     line_seperator = wibox.widget.textbox("  |  ")
@@ -248,13 +241,14 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
 	    layout = wibox.layout.fixed.horizontal,
-            s.myspotify,
 	    space_seperator,
-	    s.mybrightness,
-	    line_seperator,
-	    s.mybattery,
-	    line_seperator,
             wibox.widget.systray(),
+	    --line_seperator,
+	    --mybacklight,
+	    line_seperator,
+	    mybattery.widget,
+	    line_seperator,
+	    myvolume.widget,
 	    line_seperator,
             mytextclock,
 	    space_seperator,
@@ -262,6 +256,8 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 end)
+
+
 -- }}}
 
 -- {{{ Mouse bindings

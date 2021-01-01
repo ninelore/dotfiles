@@ -19,10 +19,8 @@ run parcellite -d
 run xset -s 300 5
 run xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 
-## Workaround for things that dont work with thr un function
-sh -c "killall cbatticon"
-sh -c "nitrogen --restore"
-sh -c "cbatticon -u 20 -c 'systemctl hibernate' -l 15 -r 3 -i symbolic"
+## Workaround for things that dont work with the run function
+nitrogen --restore
 
 ## RUN THIS LAST!!!
 run pulseaudio --start
