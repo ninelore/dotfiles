@@ -197,8 +197,9 @@ awful.screen.connect_for_each_screen(function(s)
 	layout = {spacing = 10, layout = wibox.layout.fixed.horizontal} -- ,
     }
     
-    -- CUSTOM WIDGETS
+    --place systray code here
 
+    -- CUSTOM WIDGETS
     mybattery = lain.widget.bat { 
 	notify = "off", 
 	timeout = 4,
