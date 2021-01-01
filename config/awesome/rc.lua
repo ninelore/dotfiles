@@ -214,7 +214,7 @@ awful.screen.connect_for_each_screen(function(s)
     })
 
     s.mybrightness = brightness_widget({
-	font = 'Overpass 9'
+	font = 'Overpass 9',
 	get_brightness_cmd = 'xbacklight -get',
 	inc_brightness_cmd = 'xbacklight -inc 5',
 	dec_brightness_cmd = 'xbacklight -dec 5'
