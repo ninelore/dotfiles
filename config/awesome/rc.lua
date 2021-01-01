@@ -19,6 +19,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 -- Custom Widgets
 local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local volumearc_widget = require("awesome-wm-widgets.volumearc-widget.volumearc")
+local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
 
 
 -- {{{ Error handling
@@ -201,13 +204,36 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Spotify
     s.myspotify = spotify_widget({
-	font = 'Ubuntu Mono 9',
-	play_icon = '/usr/share/icons/candy-icons/apps/scalable/com.spotify.Client.svg',
-	pause_icon = '/usr/share/icons/candy-icons/apps/scalable/com.spotify.Client.svg',
+	font = 'Overpass 9',
+	play_icon = '/usr/share/icons/candy-icons/apps/scalable/spotify.svg',
+	pause_icon = '/usr/share/icons/candy-icons/apps/scalable/spotify.svg',
 	dim_when_paused = true,
 	dim_opacity = 0.5,
 	max_length = -1,
 	show_tooltip = false
+    })
+
+    s.mybrightness = brightness_widget({
+	font = 'Overpass 9'
+	get_brightness_cmd = 'xbacklight -get',
+	inc_brightness_cmd = 'xbacklight -inc 5',
+	dec_brightness_cmd = 'xbacklight -dec 5'
+    })
+
+    s.myvolume = volumearc_widget({
+	inc_volume_cmd = 'pamixer -i 5',
+	dec_volume_cmd = 'pamixer -d 5',
+	tog_volume_cmd = 'pamixer -t',
+	thickness = 3,
+	button_press = function(_, _, _, button)   -- Overwrites the button press behaviour to open pavucontrol when clicked
+	    if (button == 1) then awful.spawn("pavucontrol") end
+	end
+    })
+
+    s.mybattery = batteryarc_widget({
+	show_current_level = true,
+	arc_thickness = 3,
+	show_current_level = true
     })
 
 
@@ -225,8 +251,11 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+	    layout = wibox.layout.fixed.horizontal,
+            s.myspotify,
+	    s.mybrightness,
+	    s.myvolume,
+	    s.mybattery,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -301,21 +330,26 @@ globalkeys = gears.table.join(
     	      {description = "picom toggle", group = "customkeys"}),
 
     awful.key({  		  }, "Print", function () awful.spawn.with_shell("notify-send 'Screenshot in 2 Seconds!' && flameshot gui -d 2000") end,
-    	      {description = "Screenshot GUI", group = "customkeys"}),
+    	      {description = "Screenshot GUI", group = "controls"}),
     awful.key({ modkey, 	  }, "x", function () awful.spawn("xset s activate") end,
-    	      {description = "Lock Screen", group = "customkeys"}),
+    	      {description = "Lock Screen", group = "controls"}),
     awful.key({ modkey, "Control" }, "x", function () awful.spawn("systemctl suspend") end,
-    	      {description = "suspend", group = "customkeys"}),
+    	      {description = "suspend", group = "controls"}),
     awful.key({			  }, "XF86AudioMute", function () 
-	       awful.spawn.with_shell("pamixer -t && notify-send $(pamixer --get-volume-human)") end,
-    	      {description = "Mute PulseAudio", group = "customkeys"}),
+	       awful.spawn.with_shell("pamixer -t") end,
+    	      {description = "Mute PulseAudio", group = "controls"}),
     awful.key({			  }, "XF86AudioRaiseVolume", function () 
-	       awful.spawn.with_shell("pamixer -i 5 && notify-send $(pamixer --get-volume-human)") end,
-    	      {description = "PulseAudio Vol +5", group = "customkeys"}),
+	       awful.spawn.with_shell("pamixer -i 5") end,
+    	      {description = "PulseAudio Vol +5", group = "controls"}),
     awful.key({			  }, "XF86AudioLowerVolume", function () 
-	       awful.spawn.with_shell("pamixer -d 5 && notify-send $(pamixer --get-volume-human)") end,
-    	      {description = "PulseAudio Vol +5", group = "customkeys"}),
-
+	       awful.spawn.with_shell("pamixer -d 5") end,
+    	      {description = "PulseAudio Vol +5", group = "controls"}),
+    awful.key({ 	          }, "XF86MonBrightnessUp", function () awful.spawn("xbacklight -inc 5") end, 
+    	      {description = "increase brightness", group = "controls"}),
+    awful.key({ 		  }, "XF86MonBrightnessDown", function () awful.spawn("xbacklight -dec 5") end, 
+    	      {description = "decrease brightness", group = "controls"}),
+    --[[awful.key({ 		  }, "XF86AudioMicMute", function () awful.spawn("") end, 
+    	      {description = "decrease brightness", group = "controls"}), --]]
 
     -- useless gap
     --[[ (WIP!)
