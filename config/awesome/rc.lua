@@ -220,22 +220,15 @@ awful.screen.connect_for_each_screen(function(s)
 	dec_brightness_cmd = 'xbacklight -dec 5'
     })
 
-    s.myvolume = volumearc_widget({
-	inc_volume_cmd = 'pamixer -i 5',
-	dec_volume_cmd = 'pamixer -d 5',
-	tog_volume_cmd = 'pamixer -t',
-	thickness = 3,
-	button_press = function(_, _, _, button)   -- Overwrites the button press behaviour to open pavucontrol when clicked
-	    if (button == 1) then awful.spawn("pavucontrol") end
-	end
-    })
-
     s.mybattery = batteryarc_widget({
 	show_current_level = true,
 	arc_thickness = 3,
 	show_current_level = true
     })
 
+
+    space_seperator = wibox.widget.textbox("  ")
+    line_seperator = wibox.widget.textbox("  |  ")
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, opacity=0.75 })
@@ -246,18 +239,25 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
+	    space_seperator,
             s.mytaglist,
+	    space_seperator,
             s.mypromptbox,
+	    space_seperator,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
 	    layout = wibox.layout.fixed.horizontal,
             s.myspotify,
+	    space_seperator,
 	    s.mybrightness,
-	    s.myvolume,
+	    line_seperator,
 	    s.mybattery,
+	    line_seperator,
             wibox.widget.systray(),
+	    line_seperator,
             mytextclock,
+	    space_seperator,
             s.mylayoutbox,
         },
     }

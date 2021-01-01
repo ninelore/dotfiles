@@ -20,6 +20,7 @@ i3blocks
 i3status
 kvantum-qt5
 kvantum-theme-sweet-git
+lain-git
 lxappearance-gtk3
 lxinput-gtk3
 lxrandr-gtk3
