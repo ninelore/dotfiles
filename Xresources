@@ -24,57 +24,10 @@ rofi.color-active:                   #161925,  #dcdfe4,  #161925,  #282c33,  #dc
 !                  		     'background', 'border', 'separator'
 rofi.color-window:                   #161925,   #282c34,   #dcdfe4
 
+
 !-------------------------------------------------------------------------------
-! URxvt settings
+! General colors
 !-------------------------------------------------------------------------------
-URxvt.modifier: Control
-URxvt*loginShell: true
-URxvt.borderless: true
-URxvt.internalBorder: 4
-URxvt.lineSpace: 1
-URxvt.saveLines: 0
-URxvt*termName: rxvt-unicode-256color
-URxvt.transparent: false
-URxvt.visualBell: false
-
-! disable ctrl+shift binding
-URxvt.iso14755:             false
-URxvt.iso14755_52:          false
-
-! Disable Perl extension
-! If you do not use the Perl extension features, you can improve the security
-! and speed by disabling Perl extensions completely.
-URxvt.perl-ext: default,url-select
-URxvt.perl-ext-common: clipboard,resize-font
-
-! clipboard
-URxvt.clipboard.autocopy: true
-URxvt.keysym.Control-Shift-c: perl:clipboard:copy
-URxvt.keysym.Control-Shift-v: perl:clipboard:paste
-
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: /usr/bin/xdg-open
-URxvt.url-select.underline: true
-
-!! Fonts
-URxvt.font: xft:SourceCodePro:size=10
-URxvt*boldFont: xft:SourceCodePro:size=10
-URxvt.allow_bold:           false
-URxvt*boldMode:             true
-! Fix font space
-URxvt*letterSpace:          -1
-
-
-! Scrollbar
-!URxvt.scrollStyle:          rxvt
-URxvt.scrollBar:            false
-
-! Cursor
-URxvt.cursorBlink:          true
-URxvt.cursorUnderline:      false
-
-! Pointer
-URxvt.pointerBlank:         false
 
 ! COLORS
 *foreground: #c3c7d1 
@@ -92,13 +45,13 @@ URxvt.pointerBlank:         false
 ! Yellow
 *color3:  #f9dc5c
 *color11: #f9dc5c
-! Blue
-*color4:  #7cb7ff
+! Blue (old #7cb7ff)
+*color4:  #00c1e4
 *color12: #7cb7ff
 ! Magenta
 *color5:  #c74ded
 *color13: #c74ded
-! Cyan (both not tango)
+! Cyan (old #5b7d78)
 *color6:  #00d1a6
 *color14: #00d1a6
 ! Grey / White
