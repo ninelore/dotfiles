@@ -17,9 +17,15 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+
+-- Themes define colours, icons, font and wallpapers.
+--beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua") -- DEFAULT
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "gtk")
+beautiful.init(theme_path)
+
 -- Custom Widgets
 local lain = require("lain")
-
+local bling = require("bling")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -47,11 +53,6 @@ end
 -- }}}
 
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
---beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua") -- DEFAULT
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "gtk")
-beautiful.init(theme_path)
-
 -- Default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
@@ -63,19 +64,23 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    --awful.layout.suit.floating,
     awful.layout.suit.tile,
-    --awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
-    --awful.layout.suit.tile.top,
     awful.layout.suit.fair,
-    --awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
-    --awful.layout.suit.spiral.dwindle,
-    --awful.layout.suit.max,
-    --awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
+    bling.layout.mstab,
+    bling.layout.centered,
+    bling.layout.vertical,
+    bling.layout.horizontal,
+    --awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.top,
+    --awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.max,
+    --awful.layout.suit.max.fullscreen,
+    --awful.layout.suit.spiral.dwindle,
+    --awful.layout.suit.floating,
     --awful.layout.suit.corner.ne,
     --awful.layout.suit.corner.sw,
     --awful.layout.suit.corner.se,
@@ -348,6 +353,14 @@ globalkeys = gears.table.join(
     --[[awful.key({ 		  }, "XF86AudioMicMute", function () awful.spawn("") end, 
     	      {description = "decrease brightness", group = "controls"}), --]]
 
+    -- bling controls
+    awful.key({ modkey, "Shift"	  }, "Tab", function () bling.module.tabbed.pick() end, 
+    	      {description = "pick app for tabbing group", group = "bling"}),
+    awful.key({ modkey, 	  }, "Tab", function () bling.module.tabbed.iter() end, 
+    	      {description = "iterate through tabbing group", group = "bling"}),
+    awful.key({ modkey, "Control" }, "Tab", function () bling.module.tabbed.pop() end, 
+    	      {description = "remove focus from tabbing group", group = "bling"}),
+
     -- useless gap
     --[[ (WIP!)
     awful.key({ modkey,	"Control" }, "i", function () lain.util.useless_gaps_resize(-2) end,
@@ -561,7 +574,7 @@ awful.rules.rules = {
 	  "feh",
 	  "Gnome-calculator",
 	  "nitrogen",
-	  "(?i)pavucontrol",
+	  "pavucontrol",
   	  "Calls"
   	},
 
@@ -581,10 +594,7 @@ awful.rules.rules = {
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
-    },
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    { rule = { name = "Calls" }, properties = { screen = 2 } },
+    }
 }
 -- }}}
 
