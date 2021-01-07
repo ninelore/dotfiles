@@ -1,18 +1,16 @@
 # ninelore's dotfiles
 My dotfiles    
-I'm using the following Window Manager:
+I'm using/used the following Window Manager:
 * awesome
-* i3wm
-* qtile (tbd, unfinished)
+* i3wm (deprecated: i stopped using i3, so it is unlikely to get improvements from now on)
 
 ## To-Do
 
-- alacritty: fix vim mouse
-- i3: i3status
 - awesome: edit/replace/remove mymainmenu
 - awesome: edit gaps without restart keybind
 - awesome: replace some tray applets with wiboxes
 - awesome: rice taglist to be a bit wider
+- i3: i3status 
 
 ## Installation
 **I recommend using the yay pacman/AUR wrapper.**
@@ -29,7 +27,7 @@ NOTE: `cbatticon` is included as autostart in the (i3wm) config. Comment it out 
 - DM: [ly-enhanced](https://github.com/ninelore/ly-enhanced)
 - Browser: Firefox
 - Terminal Editor: Alacritty
-- Editor: vim
+- Editor: nvim
 - File Manager: ranger
 - Screenshots: Flameshot
 - Clipboard: Parcellite
