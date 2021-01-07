@@ -119,6 +119,7 @@ theme.bg_minimize   = mix(theme.wibar_fg, theme.wibar_bg, 0.3)
 theme.fg_minimize   = mix(theme.wibar_fg, theme.wibar_bg, 0.9)
 
 theme.bg_systray    = theme.wibar_bg
+theme.systray_icon_spacing = 1
 
 theme.border_normal = theme.gtk.wm_border_unfocused_color
 theme.border_focus  = theme.gtk.wm_border_focused_color
