@@ -118,6 +118,7 @@ bindkey -v
 alias v='vim'
 alias untar='tar -zxvf'
 alias ls='ls --color=auto'
+alias lsl='ls --color=auto -l'
 alias l.='ls -d .* --color=auto'
 alias sv='sudo vim'
 alias root='sudo -i'
