@@ -289,7 +289,9 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey 		  }, "d", function () awful.spawn("rofi -show combi") end,
     	      {description = "open rofi menu", group = "launcher"}),
- 
+    --awful.key({ modkey 		  }, "-", function () awful.spawn("xlayoutdisplay") end,
+    --	      {description = "run xlayoutdisplay", group = "controls"}),
+
     awful.key({ modkey, "Shift"	  }, "o", function () awful.spawn.with_shell("$HOME/.config/picom.sh") end,
     	      {description = "picon toggle", group = "customkeys"}),
     awful.key({ modkey, 	  }, "Escape", function () awful.spawn("xkill") end,
