@@ -17,9 +17,9 @@ I'm using/used the following Window Manager:
 The root of the repo resembles $HOME (you need to add the dot where it is missing!!)   
 
 To install all requirements on Arch Linux run this: **requires yay**   
-(`cd dotfiles`)
-`yay -Syu --needed $(cat requirements.txt)`
-`./install-vimplug-ohmyzsh.sh`
+(`cd dotfiles`)   
+`yay -Syu --needed $(cat requirements.txt)`   
+`./install-vimplug-ohmyzsh.sh`   
 
 ### Recommended software
 (some are not included in the requirements.txt)
