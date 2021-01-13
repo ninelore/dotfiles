@@ -8,9 +8,8 @@ I'm using/used the following Window Manager:
 
 - awesome: edit/replace/remove mymainmenu
 - awesome: edit gaps without restart keybind
-- awesome: replace some tray applets with wiboxes
-- awesome: rice taglist to be a bit wider
-- i3: i3status 
+- awesome: edit taglist to be a bit wider
+- vim: lightline colorscheme
 
 ## Installation
 **I recommend using the yay pacman/AUR wrapper.**
