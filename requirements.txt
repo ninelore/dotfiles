@@ -4,6 +4,7 @@ arc-icon-theme
 awesome
 candy-icons-git
 cbatticon
+cowsay
 dunst
 feh
 ffmpeg
@@ -74,3 +75,4 @@ xsecurelock
 xss-lock
 yay
 youtube-dl
+zsh

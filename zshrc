@@ -130,6 +130,6 @@ alias reboot="systemctl reboot"
 alias r='ranger'
 alias sr='sudo ranger'
 alias c='clear'
-alias yt='$HOME/.local/bin/yt'
 alias cryptopen='sudo cryptsetup open'
 alias cryptclose='sudo cryptsetup close'
+alias help='cowsay Read the FUCKING MANUAL!!!'

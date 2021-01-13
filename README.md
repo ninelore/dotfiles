@@ -16,26 +16,19 @@ I'm using/used the following Window Manager:
 **I recommend using the yay pacman/AUR wrapper.**
 The root of the repo resembles $HOME (you need to add the dot where it is missing!!)   
 
-To install all required packages (Arch Linux) run this: **requires yay**     
-`yay -Syu --needed $(grep requirements.txt)`
+To install all requirements on Arch Linux run this: **requires yay**   
+(`cd dotfiles`)
+`yay -Syu --needed $(cat requirements.txt)`
+`./install-vimplug-ohmyzsh.sh`
 
-NOTE: `cbatticon` is included as autostart in the (i3wm) config. Comment it out for non-battery devices
-
-### Software i use
+### Recommended software
 (some are not included in the requirements.txt)
 
 - DM: [ly-enhanced](https://github.com/ninelore/ly-enhanced)
-- Browser: Firefox
-- Terminal Editor: Alacritty
-- Editor: nvim
-- File Manager: ranger
-- Screenshots: Flameshot
-- Clipboard: Parcellite
-- (list unfinished)
+- tbd
 
 ## FAQ
 nothing atm
 
 ## Credits
-[yt script](https://github.com/sayan01/scripts/blob/master/yt)
-more tba
+tbd
