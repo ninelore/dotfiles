@@ -17,7 +17,7 @@ require("awful.hotkeys_popup.keys")
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "gtk")
 beautiful.init(theme_path)
 
--- Librarys depending on beautiful
+-- Librarys depending on beautiful/theme
 local lain = require("lain")
 local bling = require("bling")
 
@@ -289,8 +289,8 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey 		  }, "d", function () awful.spawn("rofi -show combi") end,
     	      {description = "open rofi menu", group = "launcher"}),
-    --awful.key({ modkey 		  }, "-", function () awful.spawn("xlayoutdisplay") end,
-    --	      {description = "run xlayoutdisplay", group = "controls"}),
+    awful.key({ modkey 		  }, "-", function () awful.spawn("xlayoutdisplay") end,
+    	      {description = "run xlayoutdisplay", group = "controls"}),
 
     awful.key({ modkey, "Shift"	  }, "o", function () awful.spawn.with_shell("$HOME/.config/picom.sh") end,
     	      {description = "picon toggle", group = "customkeys"}),
@@ -538,22 +538,23 @@ awful.rules.rules = {
           "Wpa_gui",
           "veromix",
           "xtightvncviewer",
-	  -- below added by 9L
-	  "feh",
-	  "Gnome-calculator",
-	  "nitrogen",
-	  "pavucontrol",
-  	  "Calls"
-  	},
+		  -- below added by 9L
+		  "feh",
+		  "Gnome-calculator",
+		  "nitrogen",
+		  "pavucontrol",
+		  "Calls"
+		},
         name = {
-          "Event Tester"  -- xev.
+          "Event Tester",  -- xev.
+		  "Volume Control"
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
-	  "task_dialog"
-  	}
+		  "task_dialog"
+		}
       }, properties = { floating = true }},
 
     -- (Dont) Add titlebars to normal clients and dialogs
