@@ -128,7 +128,9 @@ theme.border_marked = theme.gtk.success_color
 theme.border_width  = dpi(theme.gtk.button_border_width or 1)
 theme.border_radius = theme.gtk.button_border_radius
 
-theme.useless_gap   = 0
+theme.useless_gap   = 2
+
+--theme.taglist_shape = shape.rectangle()
 
 local rounded_rect_shape = function(cr,w,h)
     gears_shape.rounded_rect(

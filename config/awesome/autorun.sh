@@ -11,7 +11,7 @@ function run {
 ## The function will only start programs that are not running yet
 run xrdb -merge $HOME/.Xresources
 run lxpolkit
-#run xlayoutdisplay
+run xlayoutdisplay
 run picom --backend glx --experimental-backends --config ~/.config/picom.conf -b
 run nm-applet
 run blueman-applet

@@ -208,7 +208,7 @@ awful.screen.connect_for_each_screen(function(s)
     line_seperator = wibox.widget.textbox("  |  ")
 
     -- Wibar
-    s.mywibox = awful.wibar({ position = "top", screen = s, opacity=0.75 })
+    s.mywibox = awful.wibar({ position = "top", screen = s, opacity=0.75, border_width=4 })
 
     -- Add widgets to the wibar
     s.mywibox:setup {
