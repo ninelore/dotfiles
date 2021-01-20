@@ -130,6 +130,8 @@ theme.border_radius = theme.gtk.button_border_radius
 
 theme.useless_gap   = 2
 
+
+
 --theme.taglist_shape = shape.rectangle()
 
 local rounded_rect_shape = function(cr,w,h)
@@ -347,6 +349,18 @@ wallpaper_alt_fg = mix(wallpaper_alt_fg, wallpaper_fg, 0.4)
 theme.wallpaper = function(s)
     return theme_assets.wallpaper(wallpaper_bg, wallpaper_fg, wallpaper_alt_fg, s)
 end
+
+---- bling variables
+-- tabbars
+theme.mstab_dont_resize_flaves = true 
+theme.tabbar_style = "default" 
+theme.mstab_tabbar_style = "default" 
+-- window swallowing
+theme.dont_swallow_classname_list    = {"firefox", "Gimp"} 
+theme.dont_swallow_filter_activated  = true 
+-- flash focus
+theme.flash_focus_start_opacity = 0.6 
+theme.flash_focus_step = 0.01 
 
 return theme
 
