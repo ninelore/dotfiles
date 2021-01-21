@@ -12,7 +12,7 @@ Xft.hintstyle:  hintfull
 !-------------------------------------------------------------------------------
 ! rofi settings
 !-------------------------------------------------------------------------------
-rofi.modi:                           combi,drun,run,calc
+rofi.modi:                           combi,calc
 rofi.lines:                          8
 rofi.font:                           Overpass 12
 rofi.combi-modi:                     drun,run
