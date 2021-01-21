@@ -298,9 +298,11 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey 		  }, "d", function () awful.spawn("rofi -show combi") end,
+    awful.key({ modkey 		      }, "d", function () awful.spawn("rofi -show combi") end,
     	      {description = "open rofi menu", group = "launcher"}),
-    awful.key({ modkey 		  }, "-", function () awful.spawn("xlayoutdisplay") end,
+    awful.key({ modkeyi, "Shift"  }, "d", function () awful.spawn("rofi -show calc") end,
+    	      {description = "open rofi menu", group = "launcher"}),
+	awful.key({ modkey 		      }, "-", function () awful.spawn("xlayoutdisplay") end,
     	      {description = "run xlayoutdisplay", group = "controls"}),
 
     awful.key({ modkey, "Shift"	  }, "o", function () awful.spawn.with_shell("$HOME/.config/picom.sh") end,
@@ -316,7 +318,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, 	  }, "F2", function () awful.spawn("gnome-calculator") end,
     	      {description = "launch calculator", group = "customkeys"}),
     awful.key({ modkey, "Shift"	  }, "w", function () awful.spawn("lxrandr") end,
-    	      {description = "picom toggle", group = "customkeys"}),
+    	      {description = "launch lxrandr", group = "customkeys"}),
 
     awful.key({  		  }, "Print", function () awful.spawn.with_shell("notify-send 'Screenshot in 2 Seconds!' && flameshot gui -d 2000") end,
     	      {description = "Screenshot GUI", group = "controls"}),

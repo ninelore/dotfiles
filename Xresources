@@ -15,8 +15,9 @@ Xft.hintstyle:  hintfull
 rofi.modi:                           combi,drun,run,calc
 rofi.lines:                          8
 rofi.font:                           Overpass 12
-rofi.combi-modi:                     drun,run,calc
+rofi.combi-modi:                     drun,run
 rofi.hide-scrollbar:                 true
+rofi.opacity:						 75
 ! Colors: 			     'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
 rofi.color-normal:                   #161925,  #c3c7d1,  #161925,  #282c34,  #c3c7d1
 rofi.color-urgent:                   #161925,  #ed254e,  #161925,  #282c34,  #ed254e
