@@ -352,7 +352,7 @@ end
 
 ---- bling variables
 -- tabbars
-theme.mstab_dont_resize_flaves = true 
+theme.mstab_dont_resize_slaves = true 
 theme.tabbar_style = "default" 
 theme.mstab_tabbar_style = "default" 
 -- window swallowing
