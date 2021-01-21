@@ -6,9 +6,7 @@ I'm using/used the following Window Manager:
 
 ## To-Do
 
-- awesome: edit/replace/remove mymainmenu
-- awesome: edit gaps without restart keybind
-- awesome: edit taglist to be a bit wider
+- awesome: maybe tweak the mainmenu
 - vim: lightline colorscheme
 
 ## Installation
