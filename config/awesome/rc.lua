@@ -300,7 +300,7 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey 		      }, "d", function () awful.spawn("rofi -show combi") end,
     	      {description = "open rofi menu", group = "launcher"}),
-    awful.key({ modkeyi, "Shift"  }, "d", function () awful.spawn("rofi -show calc") end,
+    awful.key({ modkey, "Shift"  }, "d", function () awful.spawn("rofi -show calc") end,
     	      {description = "open rofi menu", group = "launcher"}),
 	awful.key({ modkey 		      }, "-", function () awful.spawn("xlayoutdisplay") end,
     	      {description = "run xlayoutdisplay", group = "controls"}),
