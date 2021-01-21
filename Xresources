@@ -34,7 +34,7 @@ rofi.color-window:                   #161925,   #282c34,   #dcdfe4
 *background: #161925
 
 ! Black
-*color0:  #282c34
+*color0:  #161925
 *color8:  #282c34
 ! Red
 *color1:  #ed254e
@@ -45,13 +45,13 @@ rofi.color-window:                   #161925,   #282c34,   #dcdfe4
 ! Yellow
 *color3:  #f9dc5c
 *color11: #f9dc5c
-! Blue (old #7cb7ff)
+! Blue 
 *color4:  #00c1e4
-*color12: #7cb7ff
+*color12: #00c1e4
 ! Magenta
 *color5:  #c74ded
 *color13: #c74ded
-! Cyan (old #5b7d78)
+! Cyan
 *color6:  #00d1a6
 *color14: #00d1a6
 ! Grey / White
