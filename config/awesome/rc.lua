@@ -341,20 +341,12 @@ globalkeys = gears.table.join(
     	      {description = "decrease brightness", group = "controls"}), --]]
 
     -- bling controls
-    awful.key({ modkey, "Shift"	  }, "Tab", function () bling.module.tabbed.pick() end, 
+    awful.key({ modkey, "Shift"	  }, "Tab", function () bling.module.tabbed.pick_with_dmenu() end, 
     	      {description = "pick app for tabbing group", group = "bling"}),
     awful.key({ modkey, 	  }, "Tab", function () bling.module.tabbed.iter() end, 
     	      {description = "iterate through tabbing group", group = "bling"}),
     awful.key({ modkey, "Control" }, "Tab", function () bling.module.tabbed.pop() end, 
     	      {description = "remove focus from tabbing group", group = "bling"}),
-
-    -- useless gap
-    --[[ (WIP!)
-    awful.key({ modkey,	"Control" }, "i", function () lain.util.useless_gaps_resize(-2) end,
-    	      {description = "decrease useless gap by 2", group = "layout"}),
-    awful.key({ modkey,	"Shift" }, "i", function () beautiful.init({theme.useless_gap = theme.useless_gap + 1}) end,
-    	      {description = "increase useless gap by 2", group = "layout"}),
-    --]]
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
