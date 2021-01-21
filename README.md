@@ -2,7 +2,6 @@
 My dotfiles    
 I'm using/used the following Window Manager:
 * awesome
-* i3wm (deprecated: I stopped using i3, so it is unlikely to get improvements from now on)
 
 ## To-Do
 
