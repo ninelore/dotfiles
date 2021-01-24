@@ -59,6 +59,7 @@ sweet-theme-git
 ttf-liberation
 ttf-roboto
 ttf-roboto-mono
+tty-clock
 ueberzug
 unarchiver
 vim
