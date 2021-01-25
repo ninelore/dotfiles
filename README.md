@@ -5,23 +5,16 @@ I'm using/used the following Window Manager:
 
 ## To-Do
 
-- awesome: maybe tweak the mainmenu
-- vim: lightline colorscheme
+- nvim: colors
 
 ## Installation
-**I recommend using the yay pacman/AUR wrapper.**
+**I recommend using the paru pacman/AUR wrapper.**
 The root of the repo resembles $HOME (you need to add the dot where it is missing!!)   
 
 To install all requirements on Arch Linux run this: **requires yay**   
 (`cd dotfiles`)   
-`yay -Syu --needed $(cat requirements.txt)`   
+`paru -Syu --needed $(cat requirements.txt)`   
 `./install-vimplug-ohmyzsh.sh`   
-
-### Recommended software
-(some are not included in the requirements.txt)
-
-- DM: [ly-enhanced](https://github.com/ninelore/ly-enhanced)
-- tbd
 
 ## FAQ
 nothing atm

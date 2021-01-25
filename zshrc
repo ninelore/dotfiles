@@ -115,6 +115,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 bindkey -v
 
+alias y='paru --bottomup'
+alias yay='paru --bottomup'
+alias apt='paru --bottomup'
 alias v='vim'
 alias untar='tar -zxvf'
 alias ls='ls --color=auto'
