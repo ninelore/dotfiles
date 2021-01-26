@@ -137,7 +137,7 @@ local function make_fa_icon( code )
 end
 
 myvolicon = make_fa_icon('\u{f028}')
-mybaticon = make_fa_icon('\u{f242}')
+mybaticon = make_fa_icon('\u{f240}')
 mybcklicon = make_fa_icon('\u{f5de}')
 --]]
 
