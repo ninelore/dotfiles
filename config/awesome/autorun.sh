@@ -15,11 +15,19 @@ run xlayoutdisplay
 run picom --backend glx --experimental-backends --config ~/.config/picom.conf -b
 run blueman-applet
 run flameshot
-run parcellite -d
 run xset -s 300 5
 run xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 
+# GPaste Daemon
+if ! pgrep -f gpaste-client ;
+then
+	gpaste-client start
+else
+	gpaste-client daemon-reexec
+fi
+
+# always reexecute nitrogen
 nitrogen --restore
 
-## RUN THIS LAST!!!
+## RUN PULSEAUDIO LAST!!!
 run pulseaudio --start

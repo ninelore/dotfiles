@@ -330,20 +330,24 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey 		      }, "d", function () awful.spawn("rofi -show combi") end,
     	      {description = "open rofi menu", group = "launcher"}),
+    awful.key({ modkey, "Control" }, "d", function () awful.spawn("networkmanager_dmenu") end,
+    	      {description = "open networkmanager menu", group = "launcher"}),
     awful.key({ modkey, "Shift"   }, "d", function () awful.spawn("rofi -show calc") end,
     	      {description = "open rofi menu", group = "launcher"}),
 
 	-- some frequently used applications
     awful.key({ modkey, 	  }, "Escape", function () awful.spawn("xkill") end,
-    	      {description = "start xkill", group = "applications"}),
-    awful.key({ modkey, 	  }, "s", function () awful.spawn("pavucontrol") end,
-    	      {description = "pavucontrol", group = "applications"}),
+    	      {description = "launch xkill", group = "applications"}),
+    awful.key({ modkey, 	  }, "a", function () awful.spawn("pavucontrol") end,
+    	      {description = "launch pavucontrol", group = "applications"}),
     awful.key({ modkey, 	  }, "F1", function () awful.util.spawn("firefox") end,
     	      {description = "launch Firefox", group = "applications"}),
     awful.key({ modkey, 	  }, "F2", function () awful.spawn("gnome-calculator") end,
     	      {description = "launch calculator", group = "applications"}),
     awful.key({ modkey, "Shift"	  }, "w", function () awful.spawn("lxrandr") end,
     	      {description = "launch lxrandr", group = "applications"}),
+	awful.key({ modkey,		  }, "s", function () awful.spawn("gpaste-client ui") end,
+			  {description = "launch clipboard ui", group = "applications"}),
 
 	-- system controls
     awful.key({ modkey, "Shift"	  }, "o", function () awful.spawn.with_shell("$HOME/.config/picom.sh") end,
@@ -368,8 +372,6 @@ globalkeys = gears.table.join(
     	      {description = "increase brightness", group = "system"}),
     awful.key({ 		  }, "XF86MonBrightnessDown", function () awful.spawn("xbacklight -dec 5") end, 
     	      {description = "decrease brightness", group = "system"}),
-    awful.key({ modkey, "Control" }, "d", function () awful.spawn("networkmanager_dmenu") end,
-    	      {description = "open networkmanager menu", group = "system"}),
     --[[awful.key({ 		  }, "XF86AudioMicMute", function () awful.spawn("") end, 
     	      {description = "decrease brightness", group = "system"}), --]]
 
