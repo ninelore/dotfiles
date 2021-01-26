@@ -334,6 +334,10 @@ globalkeys = gears.table.join(
     	      {description = "open networkmanager menu", group = "launcher"}),
     awful.key({ modkey, "Shift"   }, "d", function () awful.spawn("rofi -show calc") end,
     	      {description = "open rofi menu", group = "launcher"}),
+    awful.key({ modkey,			  }, "c", function () awful.spawn("btmenu") end,
+    	      {description = "open bluetooth dmenu", group = "launcher"}),
+    awful.key({ modkey, "Shift"   }, "c", function () awful.spawn("blueman-manager") end,
+    	      {description = "open bluetooth settings", group = "launcher"}),
 
 	-- some frequently used applications
     awful.key({ modkey, 	  }, "Escape", function () awful.spawn("xkill") end,
