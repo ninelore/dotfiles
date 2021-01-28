@@ -29,7 +29,6 @@ neovim
 neovim-symlinks
 networkmanager
 networkmanager-dmenu-git
-nitrogen
 nm-connection-editor
 nodejs
 npm

@@ -25,8 +25,5 @@ else
 	gpaste-client daemon-reexec
 fi
 
-# always reexecute nitrogen
-nitrogen --restore
-
 ## RUN PULSEAUDIO LAST!!!
 run pulseaudio --start
