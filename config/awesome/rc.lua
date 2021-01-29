@@ -211,8 +211,16 @@ awful.screen.connect_for_each_screen(function(s)
 			widget:set_markup(" " .. perc .. "% ")
 		end
     )
+	-- Spotify widget
+	myspotify = awful.widget.watch('bash -c "echo $(playerctl metadata xesam:artist) - $(playerctl metadata xesam:title)"', 2,
+		function(widget, stdout)
+			widget:set_markup(' ' .. stdout)
+			return
+		end
+	)
 
     space_seperator = wibox.widget.textbox("  ")
+    space_seperator2 = wibox.widget.textbox(" ")
     line_seperator = wibox.widget.textbox("  |  ")
 
     -- Wibar
@@ -235,6 +243,10 @@ awful.screen.connect_for_each_screen(function(s)
 		layout = wibox.layout.fixed.horizontal,
 			space_seperator,
 			mysystray,
+			line_seperator,
+			myspoicon,
+			myspotify,
+			space_seperator2,
 			line_seperator,
 			mybcklicon,
 			mybacklight,
