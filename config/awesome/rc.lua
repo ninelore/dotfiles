@@ -317,9 +317,9 @@ globalkeys = gears.table.join(
               {description = "next layout", group = "layouts"}),
     awful.key({ modkey, "Control" }, "q", function () awful.layout.inc(-1) end,
               {description = "previous layout", group = "layouts"}),
-    awful.key({ modkey, "Shift" }, "a", function () lain.util.useless_gaps_resize(2) end,
+    awful.key({ modkey, "Shift" }, "a", function () lain.util.useless_gaps_resize(4) end,
               {description = "increase useless gap", group = "gaps"}),
-    awful.key({ modkey, "Control" }, "a", function () lain.util.useless_gaps_resize(-2) end,
+    awful.key({ modkey, "Control" }, "a", function () lain.util.useless_gaps_resize(-4) end,
               {description = "decrease useless gap", group = "gaps"}),
 	awful.key({ modkey, "Control" }, "n",
               function ()
