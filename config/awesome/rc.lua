@@ -135,23 +135,25 @@ local tasklist_buttons = gears.table.join(
                                               awful.client.focus.byidx(-1)
                                           end))
 
+-- Wallpaper function
 local function set_wallpaper(s)
-    -- Wallpaper
     if beautiful.wallpaper then
         local wallpaper = beautiful.wallpaper
-        -- If wallpaper is a function, call it with the screen
         if type(wallpaper) == "function" then
             wallpaper = wallpaper(s)
         end
         gears.wallpaper.maximized(wallpaper, s, true)
     end
+	if gears.filesystem.file_executable("$HOME/.fehbg") then
+		awful.spawn("$HOME/.fehbg")
+	end
 end
 
--- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
+-- Re-set wallpaper when a screen's geometry changes
 screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
+    -- Set wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
@@ -193,12 +195,6 @@ awful.screen.connect_for_each_screen(function(s)
 		notify = "off", 
 		timeout = 4,
 		settings = function()
-			--[[
-			if bat_now.perc >= 96 then
-				widget:set_markup(" 100% ");
-			else
-				widget:set_markup(" " .. bat_now.perc .. "% ");
-			end --]]
 			widget:set_markup(" " .. bat_now.perc .. "% ");
 		end 
     }--]]
@@ -214,7 +210,7 @@ awful.screen.connect_for_each_screen(function(s)
 			local perc = tonumber(stdout:match("(%d+).%d"))
 			widget:set_markup(" " .. perc .. "% ")
 		end
-    )--]]
+    )
 
     space_seperator = wibox.widget.textbox("  ")
     line_seperator = wibox.widget.textbox("  |  ")
@@ -627,5 +623,4 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- Autostart
-screen.connect_signal("property::geometry", function () awful.spawn("~/.fehbg") end)
 awful.spawn.with_shell("$HOME/.config/awesome/autorun.sh")
