@@ -200,12 +200,13 @@ awful.screen.connect_for_each_screen(function(s)
     }--]]
 	-- Volume widget
     myvolume = lain.widget.alsa { 
+		timeout = 2,
 		settings = function()
 			widget:set_markup(" " .. volume_now.level .. "% ")
 		end
     }
 	-- Backlight widget
-    mybacklight = awful.widget.watch("light", 5,
+    mybacklight = awful.widget.watch("light", 2,
 		function(widget, stdout)
 			local perc = tonumber(stdout:match("(%d+).%d"))
 			widget:set_markup(" " .. perc .. "% ")
