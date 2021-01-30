@@ -41,7 +41,6 @@ pavucontrol
 pcmanfm-gtk3
 picom-tryone-git
 playerctl
-polybar
 powerline-fonts-git
 pulseaudio
 pulseaudio-alsa
