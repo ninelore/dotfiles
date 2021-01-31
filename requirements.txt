@@ -11,6 +11,7 @@ firefox
 flameshot
 fzf
 gnome-calculator
+gpaste
 gvfs
 gvfs-smb
 gvfs-mtp
@@ -32,6 +33,7 @@ networkmanager
 networkmanager-dmenu-git
 nm-connection-editor
 nodejs
+noto-fonts
 npm
 otf-overpass
 pamixer
@@ -54,6 +56,7 @@ rofi
 rofi-calc
 rofi-dmenu
 sweet-theme-git
+ttf-dejavu
 ttf-liberation
 ttf-nerd-fonts-symbols
 ttf-roboto
