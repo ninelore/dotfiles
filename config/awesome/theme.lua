@@ -43,8 +43,8 @@ theme.tasklist_spacing = 2
 theme.tasklist_shape = gears_shape.rectangle_shape
 theme.tasklist_shape_border_width = 2
 theme.tasklist_shape_border_color = theme.bg_focus
-theme.tasklist_disable_task_name = true
---theme.tasklist_disable_icon = true
+--theme.tasklist_disable_task_name = true
+theme.tasklist_disable_icon = true
 
 theme.taglist_bg_occupied = theme.bg_normal
 theme.taglist_fg_occupied = theme.fg_normal

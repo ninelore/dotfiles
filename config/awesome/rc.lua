@@ -381,9 +381,9 @@ globalkeys = gears.table.join(
     	      {description = "increase volume", group = "system"}),
     awful.key({			  }, "XF86AudioLowerVolume", function () awful.spawn.with_shell("pamixer -d 5") myvolume.update() end,
     	      {description = "decrease volume", group = "system"}),
-    awful.key({ 	          }, "XF86MonBrightnessUp", function () awful.spawn("brightnessctl s +5%") end, 
+    awful.key({ 	          }, "XF86MonBrightnessUp", function () awful.spawn("light -A 5") end,
     	      {description = "increase brightness", group = "system"}),
-    awful.key({ 		  }, "XF86MonBrightnessDown", function () awful.spawn("brightnessctl s 5%-") end, 
+    awful.key({ 		  }, "XF86MonBrightnessDown", function () awful.spawn("light -U 5") end,
     	      {description = "decrease brightness", group = "system"}),
     --[[awful.key({ 		  }, "XF86AudioMicMute", function () awful.spawn("") end, 
     	      {description = "decrease brightness", group = "system"}), --]]
