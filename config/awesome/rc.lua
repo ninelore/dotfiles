@@ -213,7 +213,7 @@ awful.screen.connect_for_each_screen(function(s)
 		end
     )
 	-- Spotify widget
-	myspotify = awful.widget.watch('bash -c "echo $(playerctl metadata xesam:artist) - $(playerctl metadata xesam:title)"', 2,
+	myspotify = awful.widget.watch('bash -c "echo $(playerctl -p spotify metadata xesam:artist) - $(playerctl -p spotify metadata xesam:title)"', 2,
 		function(widget, stdout)
 			widget:set_markup(' ' .. stdout)
 			return
@@ -365,7 +365,7 @@ globalkeys = gears.table.join(
 	-- system controls
     awful.key({ modkey, "Shift"	  }, "o", function () awful.spawn.with_shell("$HOME/.config/picom.sh") end,
     	      {description = "toggle picom", group = "system"}),
-	awful.key({ modkey 		      }, "-", function () awful.spawn("xlayoutdisplay") end,
+	awful.key({ modkey 		      }, "-", function () awful.spawn.with_shell("xlayoutdisplay && $HOME/.fehbg") end,
     	      {description = "run xlayoutdisplay", group = "system"}),
 	awful.key({ modkey, "Control" }, "s", function () awful.spawn.with_shell("pulseaudio -k && sleep 1 && pulseaudio --start") end,
     	      {description = "restart pulseaudio", group = "system"}),
