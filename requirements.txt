@@ -43,7 +43,7 @@ parcellite
 paru
 pavucontrol
 pcmanfm-gtk3
-picom-tryone-git
+picom-ibhagwan-git
 playerctl
 powerline-fonts-git
 pulseaudio
