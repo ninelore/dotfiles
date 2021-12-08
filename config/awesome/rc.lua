@@ -197,16 +197,17 @@ awful.screen.connect_for_each_screen(function(s)
 		settings = function()
 			widget:set_markup(" " .. bat_now.perc .. "% ");
 		end 
-    }--]]
-	-- Volume widget
-    myvolume = lain.widget.alsa { 
-		timeout = 2,
-		settings = function()
-			widget:set_markup(" " .. volume_now.level .. "% ")
-		end
     }
+	-- Volume Widget
+    myvolume2 = awful.widget.watch("pamixer --get-volume", 2,
+		function(widget, stdout)
+			local perc2 = tonumber(stdout)
+			widget:set_markup(" " .. perc2 .. "% ")
+			return
+		end
+    )
 	-- Backlight widget
-    mybacklight = awful.widget.watch("light", 2,
+	mybacklight = awful.widget.watch("light", 2,
 		function(widget, stdout)
 			local perc = tonumber(stdout:match("(%d+).%d"))
 			widget:set_markup(" " .. perc .. "% ")
@@ -256,7 +257,7 @@ awful.screen.connect_for_each_screen(function(s)
 			mybattery.widget,
 			line_seperator,
 			myvolicon,
-			myvolume.widget,
+			myvolume2,
 			line_seperator,
 		    mytextclock,
 			space_seperator,

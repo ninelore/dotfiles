@@ -1,0 +1,10 @@
+configuration {
+	modi:                           "combi,calc";
+	lines:                          "8";
+	font:                           "Overpass 12";
+	combi-modi:                     "drun,run";
+	hide-scrollbar:                 "true";
+	opacity:						"75";
+	background:						"#161925";
+}
+@theme "theme.rasi"

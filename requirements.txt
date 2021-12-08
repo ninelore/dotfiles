@@ -62,11 +62,10 @@ ttf-liberation
 ttf-nerd-fonts-symbols
 ttf-roboto
 ttf-roboto-mono
-tty-clock
+tty-clock-git
 ueberzug
 unarchiver
 w3m
-xcursor-sweet
 xdg-utils
 xinit-xsession
 xorg-xkill
