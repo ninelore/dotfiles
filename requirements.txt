@@ -68,6 +68,7 @@ unarchiver
 w3m
 xdg-utils
 xinit-xsession
+xlayoutdisplay
 xorg-xkill
 xorg-xmodmap
 xorg-xrandr
