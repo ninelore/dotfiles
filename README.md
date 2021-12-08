@@ -6,6 +6,7 @@ I'm using/used the following Window Manager:
 ## To-Do
 
 - nvim: colors
+- nvim: Plugins
 
 ## Installation
 **I recommend using the paru pacman/AUR wrapper.**
