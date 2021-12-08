@@ -558,6 +558,7 @@ awful.rules.rules = {
 		  "Gnome-calculator",
 		  "nitrogen",
 		  "pavucontrol",
+		  "Bitwarden",
 		  "Calls"
 		},
         name = {
