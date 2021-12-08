@@ -56,7 +56,7 @@ ranger
 rofi
 rofi-calc
 rofi-dmenu
-sweet-theme-git
+sweet-gtk-theme-dark
 ttf-dejavu
 ttf-liberation
 ttf-nerd-fonts-symbols
