@@ -7,6 +7,7 @@ function run {
 	fi
 }
 
+#### This file is for system background programs!
 ## Place 'run *program* here'. One Program per line
 ## The function will only start programs that are not running yet
 run xrdb -merge $HOME/.Xresources
@@ -16,6 +17,7 @@ run picom --backend glx --experimental-backends --config ~/.config/picom.conf -b
 run flameshot
 run xset -s 300 5
 run xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+
 # run .fehbg if it exists
 if [[ -e $HOME/.fehbg ]]; then
 	$HOME/.fehbg
@@ -29,5 +31,13 @@ else
 	gpaste-client daemon-reexec
 fi
 
-## RUN PULSEAUDIO LAST!!!
-run pulseaudio --start
+## start Pulseaudio as late as possible if installed
+if [[ -e /usr/bin/pulseaudio ]]; then
+	run pulseaudio --start
+fi
+
+# run additional programs that arent system
+if [[ -e $HOME/.config/autostart.sh ]]
+	$HOME/.config/autorun.sh
+fi
+
