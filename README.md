@@ -10,12 +10,10 @@ I'm using/used the following Window Manager:
 ## Installation
 **I recommend using the paru pacman/AUR wrapper.**
 
-To install all requirements on Arch Linux run this: **requires yay**   
+To install all requirements on Arch Linux run this: **requires paru** or manual sourcing of AUR Package   
 (`cd dotfiles`)   
 `paru -Syu --needed $(cat requirements.txt)`   
 `./install-vimplug-ohmyzsh.sh`   
-
-My lightdm and lightdm-mini-greeter settings are included in the etc folder insode this repo.
 
 ## FAQ
 nothing atm
