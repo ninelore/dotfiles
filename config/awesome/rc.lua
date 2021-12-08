@@ -201,8 +201,8 @@ awful.screen.connect_for_each_screen(function(s)
 	-- Volume Widget
     myvolume2 = awful.widget.watch("pamixer --get-volume", 2,
 		function(widget, stdout)
-			local perc2 = tonumber(stdout)
-			widget:set_markup(" " .. perc2 .. "% ")
+			local perc = tonumber(stdout)
+			widget:set_markup(" " .. perc .. "% ")
 			return
 		end
     )
