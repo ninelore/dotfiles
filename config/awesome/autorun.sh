@@ -17,6 +17,7 @@ run picom --backend glx --experimental-backends --config ~/.config/picom.conf -b
 run flameshot
 run xset s 300 5
 run xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+numlockx on
 
 # run .fehbg if it exists
 if [[ -e $HOME/.fehbg ]]; then

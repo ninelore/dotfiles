@@ -35,6 +35,7 @@ nm-connection-editor
 nodejs
 noto-fonts
 npm
+numlockx
 otf-overpass
 pamixer
 pamtester
