@@ -37,7 +37,8 @@ if [[ -e /usr/bin/pulseaudio ]]; then
 fi
 
 # run additional programs that arent system
-if [[ -e $HOME/.config/autostart.sh ]]; then
+if [[ -e $HOME/.config/autorun.sh ]]; then
+	sleep 1
 	$HOME/.config/autorun.sh
 fi
 

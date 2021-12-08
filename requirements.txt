@@ -23,7 +23,6 @@ kvantum-theme-sweet-git
 lain-git
 light
 lxappearance-gtk3
-lxinput-gtk3
 lxrandr-gtk3
 lxsession-gtk3
 mpv
