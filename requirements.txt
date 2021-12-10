@@ -22,6 +22,8 @@ kvantum-qt5
 kvantum-theme-sweet-git
 lain-git
 light
+lightdm
+light-locker
 lxappearance-gtk3
 lxrandr-gtk3
 lxsession-gtk3
@@ -34,6 +36,7 @@ networkmanager-dmenu-git
 nm-connection-editor
 nodejs
 noto-fonts
+noto-fonts-emoji
 npm
 numlockx
 otf-overpass

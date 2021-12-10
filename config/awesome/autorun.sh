@@ -14,9 +14,10 @@ run xrdb -merge $HOME/.Xresources
 run lxpolkit
 run xlayoutdisplay
 run picom --backend glx --experimental-backends --config ~/.config/picom.conf -b
+run light-locker
 run flameshot
 run xset s 300 5
-run xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+run xss-lock -n /usr/lib/xsecurelock/dimmer -l -- light-locker-command -l
 numlockx on
 
 # run .fehbg if it exists
