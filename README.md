@@ -1,10 +1,9 @@
 # ninelore's dotfiles
-My dotfiles    
-I'm using LightDM and awesomewm atm
+My dotfiles  
+I'm using awesomewm with LightDM, but this may either change on get some additions in the future.
 
 ## To-Do
-
-- nvim: config overhaul (wip)
+- nothing atm :)
 
 ## Installation
 
@@ -34,4 +33,4 @@ Run:
 nothing atm
 
 ## Credits
-tbd
+Various people from the [ArmaOnUnix Discord](https://discord.gg/p28Ra36) for all sorts of tips and help
