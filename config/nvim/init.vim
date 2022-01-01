@@ -61,6 +61,18 @@ autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen " set C files to have 
 
 " Universal Clipboard
 set clipboard=unnamedplus
+let g:clipboard = {
+          \   'name': 'myClipboard',
+          \   'copy': {
+          \      '+': ['gpaste-client'],
+          \      '*': ['*'],
+          \    },
+          \   'paste': {
+          \      '+': ['gpaste-client', 'get', '--use-index', '0'],
+          \      '*': ['*'],
+          \   },
+          \   'cache_enabled': 1,
+          \ }
 
 " Go to tab by number
 :let mapleader = "\<Space>"
