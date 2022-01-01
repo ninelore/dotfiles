@@ -4,8 +4,7 @@ I'm using LightDM and awesomewm atm
 
 ## To-Do
 
-- nvim: colors
-- nvim: Plugins
+- nvim: config overhaul (wip)
 
 ## Installation
 **I recommend using the paru pacman/AUR wrapper.**
@@ -14,6 +13,13 @@ To install all requirements on Arch Linux run this: **requires paru** or manual 
 (`cd dotfiles`)   
 `paru -Syu --needed $(cat requirements.txt)`   
 `./install-vimplug-ohmyzsh.sh`  
+
+#### Initialize Neovim Plugins
+Run:  
+```
+:Pluginstall
+:CocInstall coc-json coc-tsserver
+```
 
 Everything in the config folder belongs inside `$HOME/.config/`.    
 Everything in the etc folder belongs inside `/etc/`.   

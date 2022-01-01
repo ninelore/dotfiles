@@ -2,29 +2,25 @@ set nocompatible
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Aesthetics
-Plug 'chriskempson/base16-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'itchyny/lightline.vim'
-Plug 'mike-hearn/base16-vim-lightline'
+Plug 'flazz/vim-colorschemes'
 
 " Language Server Protocol
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
-" Auto complete
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Auto-completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Utility
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 
-" HTML/CSS Live Editing
-Plug 'turbio/bracey.vim'
-
 call plug#end()
+
 
 "True Color support
 if (empty($TMUX))
@@ -43,8 +39,13 @@ set incsearch
 set hlsearch
 
 " Aesthetics
-set t_Co=16
-" colorscheme base16-default-dark
+set t_Co=256
+colorscheme SweetCandy
+hi NonText ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi Comment guibg=NONE ctermbg=NONE
+hi NonText guibg=NONE ctermbg=NONE
 
 " Syntax
 syntax on
@@ -129,27 +130,30 @@ let g:lsp_signs_hint = {'text': '?'}
 let g:lsp_virtual_text_enabled = 1
 let g:lsp_highlight_references_enabled = 1
 
-" --> asyncomplete.vim
+
+" --> coc.vim
 
 " Tab Completion
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+inoremap <expr> <cr>    pumvisible() ? coc#_select_confirm() : "\<cr>"
+
 
 " --> NERDTree
 
 nnoremap gn :NERDTreeToggle<CR>
 
+
 " --> Lightline
 
- set noshowmode
- let g:lightline = {
-      \ 'colorscheme': 'base16_default_dark',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
+set noshowmode
+let g:lightline = {
+    \ 'colorscheme': 'powerlineish',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+	\             [ 'gitbranch', 'readonly', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'FugitiveHead'
+    \ },
+    \ }
