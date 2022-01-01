@@ -38,6 +38,9 @@ set showmatch
 set incsearch
 set hlsearch
 
+" Mouse
+set mouse=a
+
 " Aesthetics
 set t_Co=256
 colorscheme SweetCandy
