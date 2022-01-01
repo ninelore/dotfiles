@@ -7,12 +7,21 @@ I'm using LightDM and awesomewm atm
 - nvim: config overhaul (wip)
 
 ## Installation
-**I recommend using the paru pacman/AUR wrapper.**
+
+#### Copy config files
+
+Everything in the config folder belongs inside `$HOME/.config/`.    
+Everything in the etc folder belongs inside `/etc/`.   
+Everything inside the home folder goes into your `$HOME` and need to have they filenames prefixed with a dot.   
+
+#### Install packages, oh-my-zsh and VimPlug
 
 To install all requirements on Arch Linux run this: **requires paru** or manual sourcing of AUR Package   
-(`cd dotfiles`)   
-`paru -Syu --needed $(cat requirements.txt)`   
-`./install-vimplug-ohmyzsh.sh`  
+```
+cd dotfiles 
+paru -Syu --needed $(cat requirements.txt)
+./install-vimplug-ohmyzsh.sh
+```
 
 #### Initialize Neovim Plugins
 Run:  
@@ -20,10 +29,6 @@ Run:
 :Pluginstall
 :CocInstall coc-json coc-tsserver
 ```
-
-Everything in the config folder belongs inside `$HOME/.config/`.    
-Everything in the etc folder belongs inside `/etc/`.   
-Everything inside the home folder goes into your `$HOME` and need to have they filenames prefixed with a dot.   
 
 ## FAQ
 nothing atm
