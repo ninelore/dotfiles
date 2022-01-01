@@ -7,5 +7,3 @@ echo "Installing Oh-my-Zsh..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo "Installed Oh-my-Zsh!"
 echo "Done!"
-echo 
-echo "IMPORTANT: Run ':PlugInstall' in vim!"
