@@ -202,6 +202,7 @@ awful.screen.connect_for_each_screen(function(s)
     myvolume = awful.widget.watch("pamixer --get-volume", 2,
 		function(widget, stdout)
 			local perc = tonumber(stdout)
+			if perc == nil then perc = 0 end
 			widget:set_markup(" " .. perc .. "% ")
 			return
 		end
@@ -559,7 +560,8 @@ awful.rules.rules = {
 		  "nitrogen",
 		  "pavucontrol",
 		  "Bitwarden",
-		  "Calls"
+		  "Calls", 
+		  "MEGAsync"
 		},
         name = {
           "Event Tester",  -- xev.
