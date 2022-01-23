@@ -8,6 +8,7 @@ window:
     x: 4
     y: 4
   gtk_theme_variant: dark
+  opacity: 0.7
 
 scrolling:
   history: 2000
@@ -38,8 +39,6 @@ colors:
     magenta: '#c74ded'
     cyan:    '#00d1a6'
     white:   '#dcdfe4'
-
-background_opacity: 0.7
 
 cursor:
   style: Underline
