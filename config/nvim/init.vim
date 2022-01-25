@@ -157,7 +157,7 @@ inoremap <expr> <cr>    pumvisible() ? coc#_select_confirm() : "\<cr>"
 " --> NERDTree
 
 nnoremap gn :NERDTreeToggle<CR>
-
+map gj :%!jq .<CR>
 
 " --> Lightline
 
