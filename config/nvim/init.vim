@@ -62,20 +62,20 @@ set smartindent
 set cindent
 autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen " set C files to have doxygen comments
 
-" Universal Clipboard
-set clipboard=unnamedplus
-let g:clipboard = {
-          \   'name': 'myClipboard',
-          \   'copy': {
-          \      '+': ['gpaste-client'],
-          \      '*': ['*'],
-          \    },
-          \   'paste': {
-          \      '+': ['gpaste-client', 'get', '--use-index', '0'],
-          \      '*': ['*'],
-          \   },
-          \   'cache_enabled': 1,
-          \ }
+" Universal Clipboard (uncomment on barebone linux)
+"set clipboard=unnamedplus
+"let g:clipboard = {
+"          \   'name': 'myClipboard',
+"          \   'copy': {
+"          \      '+': ['gpaste-client'],
+"          \      '*': ['*'],
+"          \    },
+"          \   'paste': {
+"          \      '+': ['gpaste-client', 'get', '--use-index', '0'],
+"          \      '*': ['*'],
+"          \   },
+"          \   'cache_enabled': 1,
+"          \ }
 
 " Go to tab by number
 :let mapleader = "\<Space>"
@@ -149,9 +149,9 @@ let g:lsp_highlight_references_enabled = 1
 " --> coc.vim
 
 " Tab Completion
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? coc#_select_confirm() : "\<cr>"
+"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <cr>    pumvisible() ? coc#_select_confirm() : "\<cr>"
 
 
 " --> NERDTree

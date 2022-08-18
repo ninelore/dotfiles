@@ -6,7 +6,7 @@ setopt appendhistory autocd
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/ninelore/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -16,15 +16,14 @@ compinit
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ninelore/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="agnoster-short"
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="nicoulaj"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="nicoulaj"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -129,8 +128,8 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 alias upall="yay -Syu --noconfirm"
 alias poff="systemctl poweroff -i"
 alias reboot="systemctl reboot"
-alias winboot="sudo efibootmgr -n 0000"
-alias nowinboot="sudo efibootmgr -N"
+#alias winboot="sudo efibootmgr -n 0000"
+#alias nowinboot="sudo efibootmgr -N"
 alias r='ranger'
 alias sr='sudo ranger'
 alias c='clear'
@@ -141,6 +140,6 @@ alias wallset='feh --bg-fill'
 alias wall='$HOME/.fehbg'
 alias py='python3'
 alias py2='python2'
-alias igpu='sudo optimus-manager --switch integrated'
-alias dgpu='sudo optimus-manager --switch hybrid'
-alias dgpu2='sudo optimus-manager --switch nvidia'
+#alias igpu='sudo optimus-manager --switch integrated'
+#alias dgpu='sudo optimus-manager --switch hybrid'
+#alias dgpu2='sudo optimus-manager --switch nvidia'
