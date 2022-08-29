@@ -149,9 +149,12 @@ let g:lsp_highlight_references_enabled = 1
 " --> coc.vim
 
 " Tab Completion
-"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <cr>    pumvisible() ? coc#_select_confirm() : "\<cr>"
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <expr> <cr>    coc#pum#visible() ? coc#pum#confirm() : "\<cr>"
 
 
 " --> NERDTree
