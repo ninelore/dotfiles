@@ -12,6 +12,7 @@ firefox
 flameshot
 fzf
 gnome-calculator
+go
 gpaste
 gvfs
 gvfs-smb
@@ -54,7 +55,6 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 pulseaudio-jack
 qt5ct
-qtile
 ranger
 rofi
 rofi-calc

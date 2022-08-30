@@ -1,6 +1,6 @@
 # ninelore's dotfiles
 My dotfiles  
-I'm using awesomewm with LightDM, but this may either change on get some additions in the future.
+I'm using awesomewm with LightDM, but this may either change or get some additions in the future.
 
 ## To-Do
 - nothing atm :)
