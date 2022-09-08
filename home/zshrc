@@ -64,11 +64,18 @@ if [[ -d $HOME/.local/bin ]]; then
 	export PATH="$HOME/.local/bin;$PATH"
 fi
 
+# Rust
+if [[ -d $HOME/.cargo/bin ]]; then
+	export PATH="$HOME/.cargo/bin;$PATH"
+fi
+
 # fly.io
 if [[ -d $HOME/.fly/bin ]]; then
 	export PATH="$HOME/.fly/bin;$PATH"
 fi
 
+# Android dev
+#tbd
 
 ### Alias
 
@@ -102,7 +109,7 @@ alias py2='python2'
 #alias cleanup='sudo apt autoremove'  # debuntu
 #alias upall='sudo apt update && sudo apt upgrade'  # debuntu
 
-## Bare Metal dependant
+## Bare Metal stuff
 #alias winboot="sudo efibootmgr -n 0000"  
 #alias nowinboot="sudo efibootmgr -N"
 #alias igpu='sudo optimus-manager --switch integrated'
