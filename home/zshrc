@@ -61,17 +61,17 @@ bindkey -v
 ### PATH
 # user binaries
 if [[ -d $HOME/.local/bin ]]; then
-	export PATH="$HOME/.local/bin;$PATH"
+	export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # Rust
 if [[ -d $HOME/.cargo/bin ]]; then
-	export PATH="$HOME/.cargo/bin;$PATH"
+	export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # fly.io
 if [[ -d $HOME/.fly/bin ]]; then
-	export PATH="$HOME/.fly/bin;$PATH"
+	export PATH="$HOME/.fly/bin:$PATH"
 fi
 
 # Android dev
