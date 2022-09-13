@@ -58,15 +58,25 @@ source $ZSH/oh-my-zsh.sh
 # vim mode
 bindkey -v
 
-### PATH
+### ENV and PATH
+# Editor
+#export EDITOR="/usr/bin/code"
+#export EDITOR="/usr/bin/nvim"
+
 # user binaries
 if [[ -d $HOME/.local/bin ]]; then
-	export PATH="$HOME/.local/bin;$PATH"
+	export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# android sdk
+export ANDROID_HOME="$HOME/android-sdk"
+if [[ -d "$ANDROID_HOME" ]]; then
+	PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 fi
 
 # fly.io
 if [[ -d $HOME/.fly/bin ]]; then
-	export PATH="$HOME/.fly/bin;$PATH"
+	export PATH="$HOME/.fly/bin:$PATH"
 fi
 
 
@@ -78,8 +88,6 @@ alias l.='ls -d .* --color=auto'
 alias sv='sudo nvim'
 alias root='sudo -i'
 alias su='sudo -i'
-alias poff="systemctl poweroff -i"
-alias reboot="systemctl reboot"
 alias r='ranger'
 alias sr='sudo ranger'
 alias c='clear'
@@ -108,3 +116,5 @@ alias py2='python2'
 #alias igpu='sudo optimus-manager --switch integrated'
 #alias dgpu='sudo optimus-manager --switch hybrid'
 #alias dgpu2='sudo optimus-manager --switch nvidia'
+#alias poff="systemctl poweroff -i"
+#alias reboot="systemctl reboot"
