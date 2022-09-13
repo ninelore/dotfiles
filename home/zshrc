@@ -84,9 +84,6 @@ if [[ -d $HOME/.fly/bin ]]; then
 	export PATH="$HOME/.fly/bin:$PATH"
 fi
 
-# Android dev
-#tbd
-
 ### Alias
 
 alias v='nvim'
