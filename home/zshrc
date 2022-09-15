@@ -58,6 +58,7 @@ source $ZSH/oh-my-zsh.sh
 # vim mode
 bindkey -v
 
+
 ### ENV and PATH
 # Editor
 #export EDITOR="/usr/bin/code"
@@ -84,10 +85,33 @@ if [[ -d $HOME/.fly/bin ]]; then
 	export PATH="$HOME/.fly/bin:$PATH"
 fi
 
+
+### Renember SSH key
+SAVESSH=false
+if [[ SAVESSH ]]; then
+	env=~/.ssh/agent.env
+	agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+	agent_start () {
+	    (umask 077; ssh-agent >| "$env")
+    	. "$env" >| /dev/null ; }
+	agent_load_env
+	agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?) # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
+	if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+	    agent_start
+	    echo "Ctrl-C to abort unlocking SSH key"
+	    ssh-add
+	elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+	    echo "Ctrl-C to abort unlocking SSH key"
+	    ssh-add
+	fi
+	unset env
+fi
+
+
 ### Alias
 
 alias v='nvim'
-alias untar='tar -xav'
+alias untar='tar -xavf'
 alias l.='ls -d .* --color=auto'
 alias sv='sudo nvim'
 alias root='sudo -i'
@@ -97,11 +121,10 @@ alias sr='sudo ranger'
 alias c='clear'
 alias cryptopen='sudo cryptsetup open'
 alias cryptclose='sudo cryptsetup close'
-alias clock='tty-clock -s -c'
-alias wallset='feh --bg-fill'
-alias wall='$HOME/.fehbg'
 alias py='python3'
 alias py2='python2'
+alias cdo='cd $OLDPWD'
+alias grep='grep --color=auto'
 
 ## Arch
 #alias y='paru --bottomup'
@@ -122,3 +145,17 @@ alias py2='python2'
 #alias dgpu2='sudo optimus-manager --switch nvidia'
 #alias poff="systemctl poweroff -i"
 #alias reboot="systemctl reboot"
+#alias clock='tty-clock -s -c'
+#alias wallset='feh --bg-fill'
+#alias wall='$HOME/.fehbg'
+
+## WSL Windows home
+#export WINUSER=""
+if [[ -d /mnt/c/Users/ ]]; then
+	if [[ -d /mnt/c/Users/$USER ]]; then
+		export WINUSER="/mnt/c/Users/$USER"
+		alias cdw='cd $WINUSER'
+	else
+		echo "Please set your windows username in zshrc!"
+	fi
+fi
