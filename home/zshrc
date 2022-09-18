@@ -150,11 +150,13 @@ alias grep='grep --color=auto'
 #alias wall='$HOME/.fehbg'
 
 ## WSL Windows home
-#export WINUSER=""
+#export WINUSER="/mnt/c/Users/"
 if [[ -d /mnt/c/Users/ ]]; then
-	if [[ -d /mnt/c/Users/$USER ]]; then
-		export WINUSER="/mnt/c/Users/$USER"
-		alias cdw='cd $WINUSER'
+	if [[ -d /mnt/c/Users/$USER ]]; then # if win username = linux username
+		export WINHOME="/mnt/c/Users/$USER"
+		alias cdw='cd $WINHOME'
+	elif [[ $WINHOME && -d $WINHOME ]]; then # if win username != linux username
+		alias cdw='cd $WINHOME'
 	else
 		echo "Please set your windows username in zshrc!"
 	fi
