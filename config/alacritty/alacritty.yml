@@ -7,7 +7,7 @@ window:
   padding:
     x: 4
     y: 4
-  gtk_theme_variant: dark
+  decorations_theme_variant: dark
   opacity: 0.7
 
 scrolling:
@@ -15,7 +15,19 @@ scrolling:
   multiplier: 1
 
 font:
-  size: 10.0
+  normal: 
+    family: Cascadia Mono
+    style: Regular
+  bold:
+    family: Cascadia Mono
+    style: Bold
+  italic:
+    family: Cascadia Mono
+    style: Italic
+  bold_italic:
+    family: Cascadia Mono
+    style: Bold Italic
+  size: 11.0
 
 colors:
   primary:

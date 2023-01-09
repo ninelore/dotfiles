@@ -24,6 +24,7 @@
 	alternate-urgent-foreground:     var(urgent-foreground);
 	alternate-active-foreground:     var(active-foreground);
 	foreground:                      var(normal-foreground);
+	alternate-normal-background:     var(normal-background);
     spacing:    2;
     border-color: var(foreground);
     background-color: transparent;

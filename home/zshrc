@@ -27,7 +27,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to use case-sensitive completion.
 #CASE_SENSITIVE="true"
 
-# Case-sensitive completion must be off. _ and - will be interchangeable.
+# _ and - will be interchangeable (Case-sensitive completion must be off).
 HYPHEN_INSENSITIVE="true"
 
 # Disable Auto Updating of oh-my-zsh
@@ -40,14 +40,14 @@ DISABLE_UPDATE_PROMPT="true"
 #ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-#COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Disable dirty repo check (speed-up)
 #DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # History timestamps
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-#HIST_STAMPS="mm/dd/yyyy"
+#HIST_STAMPS="yyyy-mm-dd"
 
 # oh-my-zsh plugins
 plugins=(git)
@@ -58,11 +58,10 @@ source $ZSH/oh-my-zsh.sh
 # vim mode
 bindkey -v
 
-
 ### ENV and PATH
 # Editor
-#export EDITOR="/usr/bin/code"
-#export EDITOR="/usr/bin/nvim"
+#export EDITOR="code"
+#export EDITOR="nvim"
 
 # user binaries
 if [[ -d $HOME/.local/bin ]]; then
@@ -85,31 +84,36 @@ if [[ -d $HOME/.fly/bin ]]; then
 	export PATH="$HOME/.fly/bin:$PATH"
 fi
 
-
 ### Renember SSH key
-SAVESSH=false
-if [[ SAVESSH ]]; then
-	env=~/.ssh/agent.env
-	agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
-	agent_start () {
-	    (umask 077; ssh-agent >| "$env")
-    	. "$env" >| /dev/null ; }
-	agent_load_env
-	agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?) # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
-	if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
-	    agent_start
-	    echo "Ctrl-C to abort unlocking SSH key"
-	    ssh-add
-	elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
-	    echo "Ctrl-C to abort unlocking SSH key"
-	    ssh-add
+savessh() {
+	if [[ -e $HOME/.ssh/id_rsa ]]; then
+		env=~/.ssh/agent.env
+		agent_load_env() { test -f "$env" && . "$env" >|/dev/null; }
+		agent_start() {
+			(
+				umask 077
+				ssh-agent >|"$env"
+			)
+			. "$env" >|/dev/null
+		}
+		agent_load_env
+		agent_run_state=$(
+			ssh-add -l >|/dev/null 2>&1
+			echo $?
+		) # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
+		if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+			agent_start
+			echo "Ctrl-C to abort unlocking SSH key"
+			ssh-add
+		elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+			echo "Ctrl-C to abort unlocking SSH key"
+			ssh-add
+		fi
+		unset env
 	fi
-	unset env
-fi
-
+}
 
 ### Alias
-
 alias v='nvim'
 alias untar='tar -xavf'
 alias l.='ls -d .* --color=auto'
@@ -122,7 +126,7 @@ alias c='clear'
 alias cryptopen='sudo cryptsetup open'
 alias cryptclose='sudo cryptsetup close'
 alias py='python3'
-alias py2='python2'
+#alias py2='python2'
 alias cdo='cd $OLDPWD'
 alias grep='grep --color=auto'
 
@@ -138,7 +142,7 @@ alias grep='grep --color=auto'
 #alias upall='sudo apt update && sudo apt upgrade'  # debuntu
 
 ## Bare Metal stuff
-#alias winboot="sudo efibootmgr -n 0000"  
+#alias winboot="sudo efibootmgr -n 0000"
 #alias nowinboot="sudo efibootmgr -N"
 #alias igpu='sudo optimus-manager --switch integrated'
 #alias dgpu='sudo optimus-manager --switch hybrid'
@@ -155,8 +159,8 @@ if [[ -d /mnt/c/Users/ ]]; then
 	if [[ -d /mnt/c/Users/$USER ]]; then # if win username = linux username
 		export WINHOME="/mnt/c/Users/$USER"
 		alias cdw='cd $WINHOME'
-	elif [[ $WINHOME && -d $WINHOME ]]; then # if win username != linux username
-		alias cdw='cd $WINHOME'
+	elif [[ $WINUSER && -d $WINUSER ]]; then # if win username != linux username
+		alias cdw='cd $WINUSER'
 	else
 		echo "Please set your windows username in zshrc!"
 	fi
