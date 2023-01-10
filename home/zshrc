@@ -71,7 +71,7 @@ fi
 # android sdk
 export ANDROID_HOME="$HOME/android-sdk"
 if [[ -d "$ANDROID_HOME" ]]; then
-	PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+	export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 fi
 
 # rust
@@ -126,7 +126,6 @@ alias c='clear'
 alias cryptopen='sudo cryptsetup open'
 alias cryptclose='sudo cryptsetup close'
 alias py='python3'
-#alias py2='python2'
 alias cdo='cd $OLDPWD'
 alias grep='grep --color=auto'
 
@@ -144,14 +143,8 @@ alias grep='grep --color=auto'
 ## Bare Metal stuff
 #alias winboot="sudo efibootmgr -n 0000"
 #alias nowinboot="sudo efibootmgr -N"
-#alias igpu='sudo optimus-manager --switch integrated'
-#alias dgpu='sudo optimus-manager --switch hybrid'
-#alias dgpu2='sudo optimus-manager --switch nvidia'
 #alias poff="systemctl poweroff -i"
 #alias reboot="systemctl reboot"
-#alias clock='tty-clock -s -c'
-#alias wallset='feh --bg-fill'
-#alias wall='$HOME/.fehbg'
 
 ## WSL Windows home
 #export WINUSER="/mnt/c/Users/"
