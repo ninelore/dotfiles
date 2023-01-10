@@ -152,7 +152,7 @@ if [[ -d /mnt/c/Users/ ]]; then
 	if [[ -d /mnt/c/Users/$USER ]]; then # if win username = linux username
 		export WINHOME="/mnt/c/Users/$USER"
 		alias cdw='cd $WINHOME'
-	elif [[ $WINUSER && -d $WINUSER ]]; then # if win username != linux username
+	elif [[ $WINUSER && -d $WINUSER ]]; then # else if custon username is set
 		alias cdw='cd $WINUSER'
 	else
 		echo "Please set your windows username in zshrc!"
