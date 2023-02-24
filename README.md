@@ -4,8 +4,9 @@ My dotfiles
 
 Present configs:
 
-- Hyprland (greetd)
-- awesomewm (lightdm)
+- Hyprland
+- awesomewm w/ lightdm
+- gnome (documentation wip)
 
 ## To-Do
 
@@ -40,6 +41,8 @@ Now open nvim and run
 ## Installation (full desktop)
 
 tbd
+
+Noteworthy Packages will be listed in [PKG.md](PKG.md)
 
 ## Credits
 
