@@ -3,71 +3,71 @@
 --   by Yauhen Kirylau                    --
 ---------------------------------------------
 
-local theme_assets = require("beautiful.theme_assets")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
-local xrdb = xresources.get_current_theme()
-local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
-local gears_shape = require("gears.shape")
-local wibox = require("wibox")
-local awful_widget_clienticon = require("awful.widget.clienticon")
+local theme_assets                = require("beautiful.theme_assets")
+local xresources                  = require("beautiful.xresources")
+local dpi                         = xresources.apply_dpi
+local xrdb                        = xresources.get_current_theme()
+local gfs                         = require("gears.filesystem")
+local themes_path                 = gfs.get_themes_dir()
+local gears_shape                 = require("gears.shape")
+local wibox                       = require("wibox")
+local awful_widget_clienticon     = require("awful.widget.clienticon")
 
 -- inherit default theme
-local theme = dofile(themes_path.."default/theme.lua")
+local theme                       = dofile(themes_path .. "default/theme.lua")
 -- load vector assets' generators for this theme
 
-theme.font          = "Overpass 10"
+theme.font                        = "Overpass 10"
 
-theme.bg_normal     = xrdb.background
-theme.bg_focus      = xrdb.color14
-theme.bg_urgent     = xrdb.color9
-theme.bg_minimize   = "#090909"
-theme.bg_systray    = theme.bg_normal
+theme.bg_normal                   = xrdb.background
+theme.bg_focus                    = xrdb.color14
+theme.bg_urgent                   = xrdb.color9
+theme.bg_minimize                 = "#090909"
+theme.bg_systray                  = theme.bg_normal
 
-theme.fg_normal     = xrdb.foreground
-theme.fg_focus      = theme.bg_normal
-theme.fg_urgent     = theme.bg_normal
-theme.fg_minimize   = theme.fg_normal
+theme.fg_normal                   = xrdb.foreground
+theme.fg_focus                    = theme.bg_normal
+theme.fg_urgent                   = theme.bg_normal
+theme.fg_minimize                 = theme.fg_normal
 
-theme.useless_gap   = 4
-theme.border_width  = 2
-theme.border_normal = xrdb.color0
-theme.border_focus  = theme.bg_focus
-theme.border_marked = xrdb.color10
+theme.useless_gap                 = 4
+theme.border_width                = 2
+theme.border_normal               = xrdb.color0
+theme.border_focus                = theme.bg_focus
+theme.border_marked               = xrdb.color10
 
-theme.wibar_height  = 24
-theme.wibar_opacity = 0.95
+theme.wibar_height                = 24
+theme.wibar_opacity               = 0.95
 
-theme.tasklist_spacing = 2
-theme.tasklist_shape = gears_shape.rectangle_shape
+theme.tasklist_spacing            = 2
+theme.tasklist_shape              = gears_shape.rectangle_shape
 theme.tasklist_shape_border_width = 2
 theme.tasklist_shape_border_color = theme.bg_focus
 --theme.tasklist_disable_task_name = true
-theme.tasklist_disable_icon = true
+theme.tasklist_disable_icon       = true
 
-theme.taglist_bg_occupied = theme.bg_normal
-theme.taglist_fg_occupied = theme.fg_normal
-theme.taglist_bg_empty = theme.bg_normal
-theme.taglist_fg_empty = xrdb.color8
+theme.taglist_bg_occupied         = theme.bg_normal
+theme.taglist_fg_occupied         = theme.fg_normal
+theme.taglist_bg_empty            = theme.bg_normal
+theme.taglist_fg_empty            = xrdb.color8
 
-theme.tooltip_fg = theme.fg_normal
-theme.tooltip_bg = theme.bg_normal
+theme.tooltip_fg                  = theme.fg_normal
+theme.tooltip_bg                  = theme.bg_normal
 
-theme.menu_height = dpi(20)
-theme.menu_width  = dpi(150)
-theme.menu_submenu_icon = nil
-theme.menu_submenu = "▸ "
+theme.menu_height                 = dpi(20)
+theme.menu_width                  = dpi(150)
+theme.menu_submenu_icon           = nil
+theme.menu_submenu                = "▸ "
 
 -- Recolor Layout icons:
-theme = theme_assets.recolor_layout(theme, theme.fg_normal)
+theme                             = theme_assets.recolor_layout(theme, theme.fg_normal)
 
 -- Recolor titlebar icons:
 --
 local function darker(color_value, darker_n)
     local result = "#"
     for s in color_value:gmatch("[a-fA-F0-9][a-fA-F0-9]") do
-        local bg_numeric_value = tonumber("0x"..s) - darker_n
+        local bg_numeric_value = tonumber("0x" .. s) - darker_n
         if bg_numeric_value < 0 then bg_numeric_value = 0 end
         if bg_numeric_value > 255 then bg_numeric_value = 255 end
         result = result .. string.format("%2.2x", bg_numeric_value)
@@ -126,9 +126,10 @@ theme.icon_size = 12
 theme.icon_font = "Symbols Nerd Font "
 theme.icon_color = theme.fg_normal
 --
-local function make_fa_icon( code )
-    return wibox.widget{
-        markup = ' <span font_desc="'.. theme.icon_font .. theme.icon_size ..'" color="'.. theme.icon_color ..'">' .. code .. '</span> ',
+local function make_fa_icon(code)
+    return wibox.widget {
+        markup = ' <span font_desc="' ..
+        theme.icon_font .. theme.icon_size .. '" color="' .. theme.icon_color .. '">' .. code .. '</span> ',
         --markup = ' ' .. code .. ' ',
         align  = 'center',
         valign = 'center',
@@ -145,15 +146,15 @@ myspoicon = make_fa_icon('\u{f1bc}')
 
 ---- bling variables
 -- tabbars
-theme.mstab_dont_resize_slaves = true
-theme.tabbar_style = "default"
-theme.mstab_tabbar_style = "default"
+theme.mstab_dont_resize_slaves      = true
+theme.tabbar_style                  = "default"
+theme.mstab_tabbar_style            = "default"
 -- window swallowing
-theme.dont_swallow_classname_list    = {"firefox", "Gimp"}
-theme.dont_swallow_filter_activated  = true
+theme.dont_swallow_classname_list   = { "firefox", "Gimp" }
+theme.dont_swallow_filter_activated = true
 -- flash focus
-theme.flash_focus_start_opacity = 0.6
-theme.flash_focus_step = 0.01
+theme.flash_focus_start_opacity     = 0.6
+theme.flash_focus_step              = 0.01
 
 return theme
 
