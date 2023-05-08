@@ -17,7 +17,7 @@ local awful_widget_clienticon     = require("awful.widget.clienticon")
 local theme                       = dofile(themes_path .. "default/theme.lua")
 -- load vector assets' generators for this theme
 
-theme.font                        = "Overpass 10"
+theme.font                        = "Overpass Nerd 10"
 
 theme.bg_normal                   = xrdb.background
 theme.bg_focus                    = xrdb.color14
@@ -123,7 +123,7 @@ end
 -- Icons
 theme.icon_size = 12
 --theme.icon_font = "Font Awesome 5 Free-Solid-900 "
-theme.icon_font = "Symbols Nerd Font "
+theme.icon_font = theme.font
 theme.icon_color = theme.fg_normal
 --
 local function make_fa_icon(code)

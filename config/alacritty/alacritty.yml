@@ -7,7 +7,7 @@ window:
   padding:
     x: 4
     y: 4
-  decorations_theme_variant: dark
+  decorations_theme_variant: Dark
   opacity: 0.7
 
 scrolling:
@@ -16,16 +16,16 @@ scrolling:
 
 font:
   normal: 
-    family: Cascadia Mono
+    family: JetBrains Mono Nerd
     style: Regular
   bold:
-    family: Cascadia Mono
+    family: JetBrains Mono Nerd
     style: Bold
   italic:
-    family: Cascadia Mono
+    family: JetBrains Mono Nerd
     style: Italic
   bold_italic:
-    family: Cascadia Mono
+    family: JetBrains Mono Nerd
     style: Bold Italic
   size: 11.0
 
