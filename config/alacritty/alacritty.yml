@@ -5,10 +5,10 @@ env:
 
 window:
   padding:
-    x: 4
-    y: 4
+    x: 5
+    y: 5
   decorations_theme_variant: Dark
-  opacity: 0.7
+  opacity: 0.9
 
 scrolling:
   history: 2000
@@ -16,40 +16,60 @@ scrolling:
 
 font:
   normal: 
-    family: JetBrains Mono Nerd
+    family: JetBrainsMono Nerd Font
     style: Regular
   bold:
-    family: JetBrains Mono Nerd
+    family: JetBrainsMono Nerd Font
     style: Bold
   italic:
-    family: JetBrains Mono Nerd
+    family: JetBrainsMono Nerd Font    
     style: Italic
   bold_italic:
-    family: JetBrains Mono Nerd
+    family: JetBrainsMono Nerd Font
     style: Bold Italic
-  size: 11.0
+  size: 12.0
 
 colors:
   primary:
-    background: '#161925'
-    foreground: '#dcdfe1'
+    background: '#101114'
+    foreground: '#dcdfe4'
   normal:
-    black:   '#161925'
-    red:     '#ed254e'
-    green:   '#71f79f'
-    yellow:  '#f9dc5c'
-    blue:    '#00c1e4'
-    magenta: '#c74ded'
-    cyan:    '#00d1a6'
-    white:   '#c3c7d1'
-  bright:
     black:   '#282c34'
-    red:     '#ed254e'
-    green:   '#71f79f'
-    yellow:  '#f9dc5c'
-    blue:    '#00c1e4'
-    magenta: '#c74ded'
-    cyan:    '#00d1a6'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#e5c07b'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#dcdfe4'
+  bright:
+    black:   '#5a6374'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#e5c07b'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#dcdfe4'  primary:
+    background: '#101114'
+    foreground: '#dcdfe4'
+  normal:
+    black:   '#282c34'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#e5c07b'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#dcdfe4'
+  bright:
+    black:   '#5a6374'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#e5c07b'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
     white:   '#dcdfe4'
 
 cursor:
