@@ -1,3 +1,7 @@
+# DEPRECATED! Please refer to https://github.com/ninelore/dots
+
+---
+
 # ninelore's dotfiles
 
 My dotfiles
